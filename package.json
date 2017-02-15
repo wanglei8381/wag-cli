@@ -1,0 +1,10 @@
+{
+  "name": "wag-cli",
+  "version": "0.0.1",
+  "bin": {
+    "we": "bin/wag"
+  },
+  "author": "lei.wang@wuage.com",
+  "dependencies": {
+  }
+}
