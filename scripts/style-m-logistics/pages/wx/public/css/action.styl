@@ -1,0 +1,148 @@
+@import "../../../../components/style/style.styl"
+body {
+  background: #F5F5F5;
+}
+
+::-webkit-input-placeholder {
+  color: #C5C5C5;
+}
+
+.mod-action-container {
+  .icon-operate{
+    background: url(//img.wuage.com/14792908479726icon-operate.png) no-repeat;
+    background-size: 2.0rem;
+  }
+  .inner {
+    width: 17.55rem;
+    margin: 0 auto;
+    background: #fff;
+  }
+  .mod-address {
+    font-size: 0.75rem;
+    margin-top: 0.6rem;
+    .address {
+      box-sizing: border-box;
+      padding: 0 0.8rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      font-size: 0.75rem;
+      color: #959595;
+      border-bottom: 1px solid #e5e5e5;
+      overflow: hidden;
+      .label {
+        float: left;
+        width: 3.825rem;
+        &:before {
+          content: '';
+          background: #77C225;
+          width: 0.4rem;
+          height: 0.4rem;
+          display: inline-block;
+          border-radius: 50%;
+          margin-right: 0.4rem;
+        }
+      }
+      .edit {
+        float: left;
+        border: none;
+        width: 11.55rem;
+        line-height: 1.2rem;
+        height: 1.2rem;
+        color: #656565;
+        font-size: 0.75rem;
+        font-family: $web-font-base;
+        margin-top: 0.5rem;
+      }
+      &:last-child {
+        border-bottom: none;
+        .label {
+          &:before {
+            background: #FF7300;
+          }
+        }
+      }
+    }
+  }
+  .mod-info {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    .info {
+      box-sizing: border-box;
+      padding: 0 0.8rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      font-size: 0.75rem;
+      color: #959595;
+      border-bottom: 1px solid #e5e5e5;
+      overflow: hidden;
+      .label {
+        float: left;
+        width: 3.825rem;
+      }
+      .edit {
+        float: left;
+        border: none;
+        width: 11.55rem;
+        color: #656565;
+        font-size: 0.75rem;
+        font-family: $web-font-base;
+        line-height: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.5rem;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      &.weight, &.mobile {
+        input {
+          width: 8.6rem;
+          margin-right: 0.625rem;
+        }
+        .icon-del {
+          display: inline-block;
+          width: 1.6rem;
+          height: 2.2rem;
+          margin-right: 0.4rem;
+          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAA3VJREFUWAnNmLtqG0EUhkcrFbbBOGlS6IZRFywEKqUkpYsQN2nyFiFFwA9hSGH8FmnSJKRQOjlyKRA2Ri5lZEPAirDBNtYt/7/ZWc2OdzczUpR4YDU7l3POpzNnbpsQlqnVaj2+vr5+NR6PNyGan0wmaeR8mM4SicQZ8o7jOLWVlZUvpVLpp9ti+JMw7CcajcZrGH+L/i/wpAzlhuhXB+RetVr9ZCLzR6CDg4NnANnBUzVRGNUHUA0825VK5XtUH9ZHAgEgCZgPyN/FKbBtA9QuoN4jH4XJhgI1m81HiJOPEGCcLCIxvt6Uy+W+rvweEGFubm4a8MxTvfPfLMNDx8vLy1UdylGNcJjomUXD0CZteLaSKkMAiDGDxkUNk2pXvm96NmV5GtScTVhb9v2Wf/iCNeu5nH2+h+DCnSgGjLXY2NgQqZTp8hPUlM/nRSaTCVYqJdW2C+QtepHrTKFQEGtra6JYLFpDESabzYpcLieWlpYUjOkrgKpkYI0LhAquwJGp3W4LBKDAVLWCkjAIBXFyciJub28jbUiGBPemq6urH+gZOx4cLnqIUIQ7PDwUwyF3hvCkw/R6vfCO09rh6urqEwcwW6iLhaEMjRPCxFMzwNBEiiwOFijjaW4CNSMMgQRZGEM5t2T4Ewc1D4xnPucgmORZxhDp9/AdHR0Fhm99fd2dTTKADWLmnj2y0EPWQNQ0GAwCMZVOp8U8MB6dCzTxCtYZh6/fn27Yd3d34vLy0lqPIjChh86VCqtXxoz0DNcYLnyzLJ6K0XPOMp6BrZMewFjPAjE1yzZDFnqoY0ujwzCA42afhf4OZ9k3CwERBiPl54XiTcXBcv0ZCqP3AGkNeRyM7DYH1JDXJse7N9WlwqjcBEbKzghVJwtjiEv2nlQWltvASHlbKMngAvESh4qGVKbno9FopkVPhaIOxKuu2i3TtrxI+rs8KrchsB8m0e12xcXFRex5JkyOdRKKMIQKS7Qt610PscAzLRp2ZYOexx2u9L56mVAxMLw4+rfZwL0M/yKJo+RXKDQ+kujGLcs1DNVLOMJ3ne8hKmIDb5TIjy0VW3enDc+WD0MlASBW8CbJGyVeaywvKNXCbq20FRgy1TiH78F8bFDBeIEE3P//HKNC8f3BfLDSwbxr0xaCkjMxB+/xxClPnfKT3inqa9wnbT/p/QIaYy+Iof28BQAAAABJRU5ErkJggg==') no-repeat;
+          background-position: center center;
+          background-size: 0.9rem;;
+        }
+        .unit {
+          float: right;
+        }
+      }
+    }
+  }
+  .mod-btn {
+    margin-top: 1.2rem;
+    .btn-full {
+      width: 100%;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      font-size: 0.8rem;
+      background: $web-color-base;
+      border: none;
+      color: #fff;
+      border-radius: 0;
+      &.disabled {
+        background: #C5C5C5;
+      }
+    }
+  }
+}
+
+/*m-picker*/
+.picker-header {
+  height: 40px;
+  width: 100%;
+  background-color: #F5F5F5;
+}
+
+.picker-header .picker-title {
+  float: left;
+  width: 50%;
+  text-align: center;
+  line-height: 40px;
+  color: #959595;
+  font-size: 15px;
+}

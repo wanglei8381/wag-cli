@@ -1,0 +1,94 @@
+.uf {
+  $ufb();
+}
+
+/* 垂直排列 */
+.uf-col {
+  $ufb-dir();
+}
+
+/* 水平反转 */
+.uf.uf-rev {
+  $ufb-dir(row-reverse);
+}
+
+/* 垂直反转 */
+.uf.uf-col.uf-rev {
+  $ufb-dir(column-reverse);
+}
+
+/* 水平垂直居中 */
+.uf-center {
+  $ufb-align(center, column);
+  $ufb-align(center, row);
+}
+
+/* 水平居中 */
+.uf-row-center {
+  $ufb-align(center, row);
+}
+
+/* 垂直居中 */
+.uf-col-center {
+  $ufb-align(center, column);
+}
+
+.uf-start {
+  $ufb-align(start, row);
+  $ufb-align(start, column);
+}
+
+.uf-row-start {
+  $ufb-align(start, row);
+}
+
+.uf-col-start {
+  $ufb-align(start, column);
+}
+
+.uf-end {
+  $ufb-align(end, row);
+  $ufb-align(end, column);
+}
+
+.uf-row-end {
+  $ufb-align(end, row);
+}
+
+.uf-col-end {
+  $ufb-align(end, column);
+}
+
+.uf-f1 {
+  $ufb-flex(1);
+}
+
+.uf-f2 {
+  $ufb-flex(2);
+}
+
+.uf-f3 {
+  $ufb-flex(3);
+}
+
+.uf-f4 {
+  $ufb-flex(4);
+}
+
+.uf-col {
+  > .uf-f1 {
+    $ufb-flex(1, h);
+  }
+
+  > .uf-f2 {
+    $ufb-flex(2, h);
+  }
+
+  > .uf-f3 {
+    $ufb-flex(3, h);
+  }
+
+  > .uf-f4 {
+    $ufb-flex(4, h);
+  }
+}

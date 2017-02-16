@@ -12,12 +12,15 @@ module.exports = {
       {name: 'styl', test: /\.styl$/, loader: "style!css!stylus"},
       {
         test: /\.js$/,
-        loader: 'babel?cacheDirectory',
+        loader: 'babel',
         exclude: /(node_modules|bower_components)/,
+        plugins: ['transform-runtime', "transform-vue-jsx"],
         query: {
-          presets: ['es2015', 'stage-3']
-        },
-        plugins: ['transform-runtime', "transform-vue-jsx"]
+          query: {
+            presets: ['es2015']
+          },
+          cacheDirectory: true
+        }
       },
       {test: /\.html$/, loader: "html"},
       {test: /\.vue$/, loader: 'vue'},

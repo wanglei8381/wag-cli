@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="referrer" content="always">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>五阿哥-物流</title>
+  <link rel="stylesheet" href="//static.wuage.com/member/pages/register/build/login.css">
+  <link rel="stylesheet" href="public/css/action.css">
+  <link rel="stylesheet" href="dist/action.css">
+  <script src="../../lib/resetFontSize.js?375&20&1"></script>
+</head>
+<body>
+<div class="mod-action-container">
+  <m-header></m-header>
+  <div class="mod-address">
+    <div class="inner">
+      <ul>
+        <li class="address">
+          <label class="label">发货地</label>
+          <m-region-picker @confirm="confirmAddressFrom">
+            <input v-model="fromForDisplay" data-name="from" class="edit" type="text" readonly="readonly" placeholder="选择发货地">
+          </m-region-picker>
+        </li>
+        <li class="address">
+          <label class="label">卸货地</label>
+          <m-region-picker @confirm="confirmAddressTo">
+            <input v-model="toForDisplay" data-name="to" class="edit" type="text" readonly="readonly" placeholder="选择卸货地">
+          </m-region-picker>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mod-info">
+    <div class="inner">
+      <ul>
+        <li class="info carrier">
+          <label class="label">承运物</label>
+          <picker :list="categorys" label="name" :confirm="confirmCategory" :change="changeCategory">
+            <input v-model="carrier" class="edit" type="text" readonly="readonly" placeholder="选择承运物">
+            <div slot="header" class="picker-header">
+              <div class="picker-title">品名</div>
+              <div class="picker-title">品类</div>
+            </div>
+          </picker>
+        </li>
+        <li class="info weight">
+          <label class="label">重量</label>
+          <input class="edit" placeholder="0.000" v-model="weight" @input="handleWeight">
+          <i class="icon-del" v-show="weight" v-touch:tap="resetWeight"></i>
+          <span class="unit">吨</span>
+        </li>
+        <li class="info mobile">
+          <label class="label">手机号码</label>
+          <input class="edit" placeholder="请输入手机号码" v-model="mobile" @input="handleMobile">
+          <i class="icon-del" v-show="mobile" v-touch:tap="resetMobile"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="mod-btn">
+    <div class="inner">
+      <a class="btn btn-full" href="javascript:;" v-touch:tap="submit" :class="{disabled:!isSubmit}">提交</a>
+    </div>
+  </div>
+  <protocol v-if="showProtocol" @agree="agree"></protocol>
+</div>
+<script type="text/javascript" src="dist/common.js"></script>
+<script type="text/javascript" src="dist/action.js"></script>
+</body>
+</html>

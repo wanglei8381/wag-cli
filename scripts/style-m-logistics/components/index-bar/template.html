@@ -1,0 +1,19 @@
+<div class="index-bar-container">
+  <slot name="header"></slot>
+  <div class="index-bar-main">
+    <div class="index-bar-content">
+      <slot></slot>
+      <ul v-for="(list, key) in data" class="index-bar-group">
+        <li :id="key" class="index-bar-cell index-bar-cell-head">{{key}}</li>
+        <li v-for="(item, index) in list" :key="index" v-touch:tap="chooseItem" :data-raw="item.raw" class="index-bar-cell tap-active">
+          {{item.raw}}
+        </li>
+      </ul>
+    </div>
+    <div class="index-bar" v-touch:tap="chooseIndex">
+      <ul class="index-bar-list">
+        <li v-for="char in chars" class="index-bar-item">{{char}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

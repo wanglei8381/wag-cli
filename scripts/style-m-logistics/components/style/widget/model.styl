@@ -1,0 +1,75 @@
+@import "../base/mixin/fn.styl"
+//苹果5s不支持flex布局
+.model-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display table
+  -webkit-transition-property: -webkit-transform, opacity;
+  transition-property: transform, opacity;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transform: translate3d(0, 0, 0) scale(1.185);
+  transform: translate3d(0, 0, 0) scale(1.185);
+  opacity: 0;
+  &.active {
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+
+  .model-wrapper {
+    display: table-cell
+    vertical-align middle
+    text-align center
+    .model-box {
+      width: 13.5rem;
+      margin auto
+      background-color: #fff;
+      border-radius: 0.6rem;
+      font-size: .85rem;
+      .model-header {
+        color: #4A4A4A;
+        text-align center
+        font-weight bold
+        padding-top 0.9rem
+        padding-bottom 0.675rem
+      }
+
+      .model-content {
+        font-size: .8rem;
+        color: #4A4A4A;
+        padding 0 1.5rem 0.9rem
+        text-align center
+      }
+
+      .model-footer {
+        border-top 1px solid #e5e5e5
+        height 2.2rem
+        line-height 2.2rem
+        text-align center
+        color: #316CCB;
+
+        .model-cancel, .model-confirm {
+          position: relative;
+          float: left;
+          width 50%
+        }
+        .model-cancel.both::after {
+          position: absolute;
+          top: 0;
+          right: 0;
+          content: '';
+          height: 100%;
+          width: 1px;
+          background-color: #e5e5e5;
+        }
+      }
+    }
+  }
+
+}

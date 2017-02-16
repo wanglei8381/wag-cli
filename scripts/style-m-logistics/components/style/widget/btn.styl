@@ -1,0 +1,45 @@
+
+.btn {
+  display: inline-block;
+  outline: none;
+  padding-left: 14px;
+  padding-right: 14px;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 2.55555556;
+  font-weight normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration none;
+  white-space: nowrap;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid $btn-border-color;
+  border-radius $border-radius-base;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  $user-select(none);
+
+  &:hover {
+    text-decoration none;
+  }
+
+  &.btn-hollow {
+    color $web-color-base
+    border-color $web-color-base
+  }
+
+  &.btn-active {
+    color #fff
+    border-color $web-color-base
+    background-color $web-color-base
+  }
+
+  &.btn-disabled {
+    opacity: .65;
+    cursor: not-allowed;
+  }
+
+  //常用的其他 btn-link, btn-success, btn-primary, btn-warning, btn-danger, btn-royal
+}

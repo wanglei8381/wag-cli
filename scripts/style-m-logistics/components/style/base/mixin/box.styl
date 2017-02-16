@@ -1,0 +1,43 @@
+@import "prefix.styl"
+
+//=== 定义在父容器上的属性 =========
+$ub() {
+  display: -webkit-box;
+}
+
+$ub-dir(dir = column) {
+  if dir == column {
+    //设置该属性可以使子容器从上到下垂直排列
+    $prefix(box-orient, vertical);
+  } else {
+    //子容器在水平方向从右向左,垂直方向从下向上
+    $prefix(box-direction, reverse);
+  }
+}
+
+$ub-align(align = center) {
+  //box-align: start | end | center | stretch
+  //父容器水平排列 start:上,center:中,end:下,stretch:子容器不设置高度或高度为auto时,子容器会拉伸的和父容器一样高,设置高度同start
+  //父容器垂直排列 start:左,center:中,end:右,stretch:子容器不设置宽度或宽度为auto时,子容器会拉伸的和父容器一样宽,设置宽度同start
+  $prefix(box-align, align);
+}
+
+$ub-pack(pack = center) {
+  //box-pack: start | end | center | justify
+  //父容器水平排列下 start:左,center:中,end:右,justify:水平等分父容器宽度
+  //父容器垂直排列下 start:上,center:中,end:下,justify:水平等分父容器高度
+  $prefix(box-pack, pack);
+}
+
+//=== 定义在项目上的属性 =========
+$ub-flex(n = 1, dir = 0, bb) {
+  $prefix(box-flex, n);
+  if bb {
+    $prefix(box-sizing, border-box);
+  }
+  if dir == w {
+    width unit(n, '%')
+  } else if dir == h {
+    height unit(n, '%')
+  }
+}

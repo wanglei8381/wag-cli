@@ -5,8 +5,7 @@
     "style-m-logistics/pages/goods/src/index.js": 0
   },
   "vendor": [
-    "vue",
-    "axios"
+    "vue"
   ],
-  "extractText": true
+  "extractText": false
 }

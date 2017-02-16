@@ -1,0 +1,56 @@
+@import "flex.styl"
+@import "box.styl"
+
+//=== 定义在父容器上的属性 =========
+$ufb() {
+  $ub();
+  $uf();
+}
+
+$ufb-dir(dir = column) {
+  $ub-dir(dir);
+  $uf-dir(dir);
+}
+
+//align: start,center,end
+//dir: row,column
+$ufb-align(align = center, dir = row) {
+  $f-align = center;
+  if align == start {
+    $f-align = flex-start;
+  } else if align == end {
+    $f-align = flex-end;
+  }
+
+  if dir == row {
+    $ub-pack(align);
+    $uf-jc($f-align);
+  } else {
+    $ub-align(align);
+    $uf-ai($f-align);
+  }
+}
+
+//=== 定义在项目上的属性 =========
+$ufb-flex(n = 1, dir = w) {
+  $ub-flex(n, dir, true);
+  $uf-flex(n, 0, false);
+}
+
+//.demo {
+//  $ufb();
+//
+//  /* 方向:垂直 */
+//  $ufb-dir();
+//  /* 方向:反转 */
+//  $ufb-dir(row-reverse);
+//
+//  /* 位置:居中 */
+//  $ufb-align();
+//  /* 位置:居中 */
+//  $ufb-align(center, column);
+//  /* 位置:end */
+//  $ufb-align(end);
+//  /* 子元素大小 */
+//  $ufb-flex();
+//}

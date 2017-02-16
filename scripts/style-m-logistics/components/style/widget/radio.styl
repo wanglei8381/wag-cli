@@ -1,0 +1,101 @@
+$checkbox-size = 22px
+
+.checkbox, .radio {
+  position relative;
+  display: inline-block;
+  padding-left ($checkbox-size / 2)
+  padding-right ($checkbox-size / 2)
+  input[type=checkbox], input[type=radio] {
+    display: none;
+    + i {
+      display inline-block;
+      position: absolute;
+      margin-left: -($checkbox-size + 4);
+      margin-top: -(($checkbox-size - 20) / 2);
+      width $checkbox-size
+      height: $checkbox-size
+      border 1px solid #ddd;
+      border-radius 50%
+    }
+    &:checked + i {
+      background-color: $web-color-base;
+      border-color: $web-color-base;
+      color #fff
+    }
+  }
+}
+
+.checkbox.disabled, .radio.disabled {
+  $opacity(.4);
+}
+
+.checkbox {
+  input[type=checkbox] {
+    &:checked + i {
+      &:before {
+        content: ' ';
+        display inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -(max(($checkbox-size - 20), 4px));
+        margin-left: -(max(($checkbox-size - 10), 10px) / 2);
+        width: max(($checkbox-size - 10), 10px);
+        height: max(($checkbox-size - 20), 6px);
+        border-bottom: 2px solid #fff;
+        border-left: 2px solid #fff;
+        $prefix(transform, rotate(-45deg));
+      }
+    }
+  }
+}
+
+.radio {
+  input[type=radio] {
+    &:checked + i {
+      background-color: #fff;
+      &:before {
+        content: '';
+        display inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top -($checkbox-size / 4);
+        margin-left -($checkbox-size / 4);
+        width ($checkbox-size / 2);
+        height ($checkbox-size / 2);
+        border-radius 50%
+        background-color: $web-color-base;
+      }
+    }
+  }
+}
+
+/*
+//仅在webkit可行
+.checkbox {
+position relative;
+display: inline-block;
+padding-left 30px
+padding-right 30px
+padding-top 9px
+input[type=checkbox] {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ddd;
+  outline: 0 !important;
+  background-color: transparent;
+  -webkit-appearance: none;
+  border-radius 50%
+  &:checked {
+    background-color: $web-color-base;
+    border-color: $web-color-base;
+  }
+}
+}
+
+*/

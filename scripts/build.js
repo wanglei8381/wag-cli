@@ -5,12 +5,16 @@ const webpack = require('webpack');
 let webpackConfig = {};
 
 const args = process.argv.slice(2);
-if (args.indexOf('-w')) {
-  webpackConfig = require('../config/webpack.client.dev');
+if (args.indexOf('-w') > -1) {
+  console.log('[webpackConfig]development')
+  webpackConfig = require('../config/webpack.client.dev').webpackConfig;
   webpackConfig.watch = true;
 } else {
-  webpackConfig = require('../config/webpack.client.prod');
+  console.log('[webpackConfig]production')
+  webpackConfig = require('../config/webpack.client.prod').webpackConfig;
 }
+
+console.log(webpackConfig)
 
 webpack(webpackConfig, function (err, stats) {
   if (err)

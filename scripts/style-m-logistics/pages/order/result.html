@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="referrer" content="always">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta psa="002">
+  <title>五阿哥-物流</title>
+  <link rel="stylesheet" href="public/css/result.css">
+  <script src="../../lib/resetFontSize.js?375&20&1"></script>
+  <script>
+    var categoryId = '2012222';
+  </script>
+</head>
+<body psa="006">
+<div class="mod-result-container">
+  <share-order></share-order>
+  <m-header @back="back"></m-header>
+  <div class="mod-success">
+    <div class="icon-tips icon-success"></div>
+    <p class="main-text">下单成功</p>
+    <p class="sub-text">我们将第一时间与您联系，请保持手机畅通。</p>
+  </div>
+  <div class="mod-recommend">
+    <div class="block-title">
+      <h1>您可能感兴趣的钢材</h1>
+      <a href="//m.wuage.com/search/more-product" class="view-more">查看更多</a>
+    </div>
+    <div class="inner">
+      <ul>
+        <li v-for="item in list" @click="goto(item.productId)">
+          <div class="left-img">
+            <img :src="item.image" alt="">
+          </div>
+          <div class="right-text">
+            <p class="title">
+              {{item.offerTitle}}
+            </p>
+            <p class="location">
+              <i class="icon-tips icon-location"></i>{{item.companyLocation}}
+            </p>
+            <p class="company nowrap">
+              {{item.companyName}}
+              <!-- <a class="icon-operate icon-call" :href="'tel:'+item.tel"></a> -->
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="dist/common.js"></script>
+<script type="text/javascript" src="dist/result.js"></script>
+</body>
+</html>

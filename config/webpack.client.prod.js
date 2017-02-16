@@ -3,7 +3,7 @@ process.env.NODE_ENV = 'production';
 const _ = require('lodash');
 const $path = require('path');
 const webpack = require('webpack');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+// const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const webpackClientDev = require('./webpack.client.dev')
@@ -24,10 +24,10 @@ webpackConfig.plugins.push(
   }),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': '"production"',
-  }),
+  })/*,
   new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.optimize.DedupePlugin(),
-  new ProgressBarPlugin()
+  new ProgressBarPlugin()*/
 );
 
 if (userConfig && userConfig.extractText) {

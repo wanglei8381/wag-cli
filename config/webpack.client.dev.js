@@ -51,13 +51,16 @@ if (args) {
   });
 }
 
+console.log('-----》commonsChunkPath', commonsChunkPath)
+
 if (!commonsChunkPath) {
   console.warn('[build]编译失败', '没有可编译的模块');
   process.exit(1);
 } else {
   if (userConfig && userConfig.vendor && userConfig.vendor.length) {
     //提取文件的公共部分
-    webpackConfig.entry[commonsChunkPath + '/common'] = config.vendor;
+    commonsChunkPath = $path.resolve(dirname, commonsChunkPath)
+    webpackConfig.entry[commonsChunkPath + '/common'] = userConfig.vendor;
     webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin(commonsChunkPath + '/common.js'));
   }
 }
