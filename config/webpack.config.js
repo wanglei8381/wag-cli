@@ -1,6 +1,3 @@
-var webpack = require('webpack');
-var _ = require('lodash');
-
 module.exports = {
   entry: {},
   output: {
@@ -11,8 +8,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.css$/, loader: "style!css"},
-      {test: /\.styl$/, loader: "style!css!stylus"},
+      {name: 'css', test: /\.css$/, loader: "style!css"},
+      {name: 'styl', test: /\.styl$/, loader: "style!css!stylus"},
       {
         test: /\.js$/,
         loader: 'babel',

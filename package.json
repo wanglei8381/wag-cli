@@ -1,11 +1,12 @@
 {
   "name": "wag-cli",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "bin": {
-    "we": "bin/wag"
+    "wag": "bin/wag.js"
   },
   "author": "lei.wang@wuage.com",
   "dependencies": {
+    "cross-spawn": "^4.0.0",
     "webpack": "^1.13.1",
     "lodash": "^4.16.6",
     "babel": "^6.5.2",
@@ -16,6 +17,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babel-runtime": "^6.11.6"
+    "babel-runtime": "^6.11.6",
+    "progress-bar-webpack-plugin": "^1.9.0"
   }
 }

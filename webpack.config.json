@@ -1,0 +1,10 @@
+{
+  "files": {
+    "src/index.js": 1
+  },
+  "vendor": [
+    "vue",
+    "axios"
+  ],
+  "extractText": true
+}
