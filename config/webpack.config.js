@@ -12,16 +12,17 @@ module.exports = {
       {name: 'styl', test: /\.styl$/, loader: "style!css!stylus"},
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel?cacheDirectory',
         exclude: /(node_modules|bower_components)/,
         query: {
-          presets: ['es2015']
+          presets: ['es2015', 'stage-3']
         },
         plugins: ['transform-runtime', "transform-vue-jsx"]
       },
       {test: /\.html$/, loader: "html"},
       {test: /\.vue$/, loader: 'vue'},
-      {test: /\.(png|jpg|gif|eot|woff|ttf)$/, loader: 'url'},
+      {test: /\.json$/, loader: 'json'},
+      {test: /\.(png|jpe?g|gif|eot|woff|ttf)$/, loader: 'url'},
       {test: /\.(mp4|ogg|svg|mp3)$/, loader: 'file'}
     ]
   },
