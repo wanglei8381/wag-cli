@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const $path = require('path');
 const fs = require('fs-extra');
 const util = require('../util/util');
+const devDependencies = require('../package.json').devDependencies;
 
 let projectName;
 //定义参数,以及参数内容的描述
@@ -23,7 +24,7 @@ if (typeof projectName === 'undefined') {
   process.exit(1);
 }
 
-const root = $path.resolve(projectName)
+let root = $path.resolve(projectName)
 
 //判断目录
 if (util.exists(root) && !program.cover) {
@@ -50,7 +51,7 @@ function createApp (root, appName) {
     dependencies: {
       vue: "^2.1.10"
     },
-    devDependencies: {}
+    devDependencies: devDependencies
   }
 
   //创建目录
