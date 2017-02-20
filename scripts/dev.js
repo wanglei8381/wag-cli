@@ -1,8 +1,7 @@
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 
 const webpack = require('webpack');
-
-let webpackConfig = require('../config/webpack.config.prod');
+let webpackConfig = require('../config/webpack.config.dev');
 
 webpack(webpackConfig, function (err, stats) {
   if (err)

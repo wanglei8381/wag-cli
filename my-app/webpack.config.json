@@ -1,0 +1,10 @@
+{
+  "files": {
+    "pages/home/src/index.js": 1
+  },
+  "vendor": [
+    "vue",
+    "axios"
+  ],
+  "devtool": "source-map"
+}

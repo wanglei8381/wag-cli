@@ -1,9 +1,0 @@
-{
-  "name": "style-m-logistics",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "wag start",
-    "build": "wag build",
-    "test": "wag test --env=jsdom"
-  }
-}

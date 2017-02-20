@@ -1,0 +1,11 @@
+{
+  "name": "wag-cli",
+  "version": "0.0.7",
+  "bin": {
+    "wag": "bin/wag.js"
+  },
+  "author": "lei.wang@wuage.com",
+  "dependencies": {
+    "vue": "^2.1.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "compileIgnore": [
+  ],
+  "completelyIgnore": [
+    ".idea",
+    ".gitignore",
+    "package.json",
+    "README.md",
+    "build/**"
+  ]
+}
