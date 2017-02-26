@@ -31,7 +31,7 @@
     margin: 0 10px;
   }
 
-  a {
+  .wanglei {
     color: #42b983;
   }
 </style>

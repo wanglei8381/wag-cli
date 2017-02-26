@@ -3,20 +3,21 @@ process.env.NODE_ENV = 'development';
 const webpack = require('webpack');
 let webpackConfig = require('../config/webpack.config.dev');
 
+// console.log(webpackConfig)
+
 webpack(webpackConfig, function (err, stats) {
-  if (err)
-    return console.log(err);
+  if (err) {
+    console.trace(err)
+    return
+  }
+  // console.log('context', stats.compilation.options)
+  process.stdout.write(stats.toString({
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
+    }) + '\n\n')
 
-  var jsonStats = stats.toJson();
-  if (jsonStats.errors.length > 0)
-    console.log(jsonStats.errors);
-  if (jsonStats.warnings.length > 0)
-    console.log(jsonStats.warnings);
-
-  console.log(stats.toString({
-    chunks: false,
-    colors: true
-  }));
-  console.log('[webpack:build] complete');
 });
 

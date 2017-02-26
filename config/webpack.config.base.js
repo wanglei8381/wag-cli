@@ -22,7 +22,7 @@ let webpackConfig = {
     publicPath: '/',
 
     //输出文件的地址
-    path: '/',
+    path: context,
 
     // 输出的文件名 hash统一生成,chunkhash变化生成
     filename: "[name].js",
@@ -83,7 +83,7 @@ let webpackConfig = {
           /\.vue$/,
           /\.(js|jsx)$/,
           /\.css$/,
-          /\.styl/,
+          /\.styl$/,
           /\.json$/,
           /\.svg$/
         ],
@@ -127,7 +127,8 @@ function resolveEntry (filePath) {
     entryPath = path.resolve(entryPath, '../dist', path.basename(entryPath))
   }
 
-  webpackConfig.entry[path.join(dirname, entryPath)] = path.join(dirname, filePath);
+  // webpackConfig.entry[path.join(dirname, entryPath)] = path.join(dirname, filePath);
+  webpackConfig.entry[entryPath] = './' + filePath;
   return entryPath.substring(0, entryPath.indexOf('dist') + 4);
 }
 

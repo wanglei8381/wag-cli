@@ -1,5 +1,6 @@
 let path = require("path");
 let webpack = require("webpack");
+var autoprefixer = require('autoprefixer');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 // let ManifestPlugin = require("webpack-manifest-plugin");
 // let HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,17 +11,12 @@ let context = webpackConfig.context
 const dirname = process.cwd();
 
 let config = module.exports = Object.assign({}, webpackConfig, {
-  output: {
-    // 静态文件访问路径
-    publicPath: '/',
-
-    //输出文件的地址
-    path: '/',
+  output: Object.assign({}, webpackConfig.output, {
 
     // 输出的文件名 hash统一生成,chunkhash变化生成
-    filename: "[name].[chunkhash:8].js",
+    filename: "[name].[chunkhash:8].js"
 
-  },
+  }),
   module: {
     rules: webpackConfig.module.rules.concat([
       //vue
@@ -33,8 +29,22 @@ let config = module.exports = Object.assign({}, webpackConfig, {
             css: ExtractTextPlugin.extract({
               use: 'css-loader',
               fallback: 'vue-style-loader'
+            }),
+            stylus: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: ['css-loader', 'stylus-loader']
             })
-          }
+          },
+          postcss: [
+            autoprefixer({
+              browsers: [
+                '>1%',
+                'last 4 versions',
+                'Firefox ESR',
+                'not ie < 9', // Vue doesn't support IE8 anyway
+              ]
+            })
+          ]
         }
       },
 
@@ -43,7 +53,24 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader"
+          use: ["css-loader", {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: function () {
+                return [
+                  autoprefixer({
+                    browsers: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // Vue doesn't support IE8 anyway
+                    ]
+                  })
+                ]
+              }
+            }
+          }]
         })
       },
 
@@ -52,7 +79,24 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader', 'stylus-loader']
+          use: ['css-loader', 'stylus-loader', {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+              plugins: function () {
+                return [
+                  autoprefixer({
+                    browsers: [
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9', // Vue doesn't support IE8 anyway
+                    ]
+                  })
+                ]
+              }
+            }
+          }]
         })
       }
     ])
@@ -112,7 +156,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
 
 if (userConfig && userConfig.vendor && userConfig.vendor.length) {
   //提取文件的公共部分
-  commonsChunkPath = path.resolve(dirname, commonsChunkPath);
+  // commonsChunkPath = path.resolve(dirname, commonsChunkPath);
 
   config.entry['vendor'] = userConfig.vendor;
   config.plugins.push(

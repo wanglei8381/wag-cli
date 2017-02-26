@@ -1,23 +1,24 @@
 process.env.NODE_ENV = 'production';
 
+var ora = require('ora')
 const webpack = require('webpack');
+const chalk = require('chalk');
 
 let webpackConfig = require('../config/webpack.config.prod');
 
+const spinner = ora('[webpack:build] start...').start();
+
 webpack(webpackConfig, function (err, stats) {
-  if (err)
-    return console.log(err);
+  spinner.stop()
+  if (err) throw err
+  process.stdout.write(stats.toString({
+      colors: true,
+      modules: false,
+      children: false,
+      chunks: false,
+      chunkModules: false
+    }) + '\n\n')
 
-  var jsonStats = stats.toJson();
-  if (jsonStats.errors.length > 0)
-    console.log(jsonStats.errors);
-  if (jsonStats.warnings.length > 0)
-    console.log(jsonStats.warnings);
-
-  console.log(stats.toString({
-    chunks: false,
-    colors: true
-  }));
-  console.log('[webpack:build] complete');
+  console.log(chalk.cyan('[webpack:build] complete\n'))
 });
 
