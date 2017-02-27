@@ -15,6 +15,7 @@ program
   })
   .usage('[options] [value ...]')
   .command('init [projectName]', '初始化项目')
+  .option('-c, --cover', '如果工程名存在,就覆盖掉')
   .command('dev', '开发')
   .command('build', '发布上线')
   .command('start', '开发自动启动服务')
@@ -41,6 +42,7 @@ switch (script) {
     process.exit(result.status);
     break;
   default:
-    console.log(`Unknown script "${script}".`);
+    console.log(chalk.bold.red(`Unknown script "${script}".`));
+    console.log('Run wag --help to see all options.\n');
     break;
 }

@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const $path = require('path');
 const fs = require('fs-extra');
 const util = require('../util/util');
-const devDependencies = require('../package.json').devDependencies;
+const version = require('../package.json').version;
 
 let projectName;
 //定义参数,以及参数内容的描述
@@ -19,9 +19,9 @@ program
 
 if (typeof projectName === 'undefined') {
   console.error(chalk.bold.red('Please specify the project directory:'));
-  console.log('Run wag --help to see all options.');
-  console.log();
+  console.log('Run wag --help to see all options.\n');
   process.exit(1);
+  process.cwd();
 }
 
 let root = $path.resolve(projectName)
@@ -51,7 +51,9 @@ function createApp (root, appName) {
     dependencies: {
       vue: "^2.1.10"
     },
-    devDependencies: devDependencies
+    devDependencies: {
+      "wag-cli": version
+    }
   }
 
   //创建目录
