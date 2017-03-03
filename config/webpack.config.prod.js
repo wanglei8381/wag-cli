@@ -5,6 +5,7 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 // let ManifestPlugin = require("webpack-manifest-plugin");
 // let HtmlWebpackPlugin = require('html-webpack-plugin');
 let webpackConfig = require("./webpack.config.base").webpackConfig;
+let devModuleRules = require("./webpack.config.dev").module.rules;
 let commonsChunkPath = require("./webpack.config.base").commonsChunkPath;
 let userConfig = require("./webpack.config.base").userConfig;
 let context = webpackConfig.context
@@ -14,11 +15,11 @@ let config = module.exports = Object.assign({}, webpackConfig, {
   output: Object.assign({}, webpackConfig.output, {
 
     // 输出的文件名 hash统一生成,chunkhash变化生成
-    filename: "[name].[chunkhash:8].js"
+    filename: userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].js' : '[name].js'
 
   }),
   module: {
-    rules: webpackConfig.module.rules.concat([
+    rules: userConfig.extractCSS ? webpackConfig.module.rules.concat([
       //vue
       {
         test: /\.vue$/,
@@ -99,7 +100,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
           }]
         })
       }
-    ])
+    ]) : devModuleRules
   },
   plugins: [
     //配置环境
@@ -123,9 +124,6 @@ let config = module.exports = Object.assign({}, webpackConfig, {
     new webpack.LoaderOptionsPlugin({
       minimize: true
     }),
-
-    //提取css,生成对应对文件
-    new ExtractTextPlugin("[name].[chunkhash:8].css"),
 
     //引入模版文件
     // new HtmlWebpackPlugin({
@@ -157,12 +155,19 @@ let config = module.exports = Object.assign({}, webpackConfig, {
 if (userConfig && userConfig.vendor && userConfig.vendor.length) {
   //提取文件的公共部分
   // commonsChunkPath = path.resolve(dirname, commonsChunkPath);
-
+  let filename = userConfig.chunkhash ? 'common.[chunkhash:' + userConfig.chunkhash + '].js' : 'common.js'
   config.entry['vendor'] = userConfig.vendor;
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: commonsChunkPath + '/common.[chunkhash:8].js',
+      filename: commonsChunkPath + '/' + filename,
     })
   );
+}
+
+if (userConfig.extractCSS) {
+  config.plugins.push(
+    //提取css,生成对应对文件
+    new ExtractTextPlugin(userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css')
+  )
 }

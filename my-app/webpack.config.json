@@ -9,6 +9,8 @@
   "port": 3000,
   "proxyTable": {
   },
+  "chunkhash": "8",
+  "extractCSS": true,
   "autoOpenBrowser": false,
   "index": "pages/home/index.html",
   "devtool": "source-map"

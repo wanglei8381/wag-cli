@@ -6,5 +6,7 @@
     "vue",
     "axios"
   ],
+  "extractCSS": true,
+  "chunkhash": "8",
   "devtool": "source-map"
 }
