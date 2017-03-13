@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 import './style.css'
 import './style.styl'
 
@@ -17,5 +18,17 @@ new Vue({
         <Hello></Hello>
       </div>
     )
+  },
+
+  methods: {
+    request () {
+      axios.get('/api').then((res) => {
+        console.log(res)
+      })
+    }
+  },
+
+  mounted () {
+    this.request()
   }
 })
