@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const _ = require('lodash');
 const util = require('../util/util');
+const chalk = require('chalk');
 
 const dirname = process.cwd();
 const context = dirname;
@@ -98,17 +99,15 @@ let webpackConfig = {
 };
 
 //用户自定义的文件入口
-if (util.isFile(path.resolve(dirname, 'webpack.config.json'))) {
-  userConfig = require(path.resolve(dirname, 'webpack.config.json'));
-  _.forEach(userConfig.files, function (val, filePath) {
-    if (val) {
-      if (!_.includes(filePath, 'src')) {
-        return console.warn('[build]编译失败', filePath + '中没有src目录');
-      }
-      commonsChunkPath = resolveEntry(filePath);
+userConfig = require(path.resolve(dirname, 'webpack.config'));
+_.forEach(userConfig.files, function (val, filePath) {
+  if (val) {
+    if (!_.includes(filePath, 'src')) {
+      return console.warn('[build]编译失败', filePath + '中没有src目录');
     }
-  });
-}
+    commonsChunkPath = resolveEntry(filePath);
+  }
+});
 
 //处理文件入口问题
 function resolveEntry (filePath) {
@@ -133,7 +132,7 @@ function resolveEntry (filePath) {
 }
 
 if (!commonsChunkPath) {
-  console.warn('[build]编译失败', '没有可编译的模块');
+  console.log(chalk.bold.red('\n[wag][build]编译失败,没有可编译的模块\n'));
   process.exit(1);
 }
 

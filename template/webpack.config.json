@@ -8,5 +8,11 @@
   ],
   "extractCSS": true,
   "chunkhash": "8",
-  "devtool": "source-map"
+  "devtool": "source-map",
+  "autoOpenBrowser": true,
+  "index": "pages/home/index.html",
+  "staticPath": "static",
+  "port": 3000,
+  "proxyTable": {
+  }
 }
