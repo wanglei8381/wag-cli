@@ -1,7 +1,3 @@
 example/
 node_modules/
-.gitignore
-.eslintrc.json
 npm-debug.log
-webpack.config.json
-my-app/
