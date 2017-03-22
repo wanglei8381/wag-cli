@@ -19,7 +19,10 @@ Version:
 
     v3.0.0 实现test
 
+    v2.3.0 build --dev
+
     v2.2.0 build添加html模版
 
     v2.1.0 修改字体,图片等生成目录不正确
-    init初始化项目却少文件
+           init初始化项目却少文件
+           build --remove 删除dist目录

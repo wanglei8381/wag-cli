@@ -20,7 +20,7 @@ let webpackConfig = {
   output: {
 
     // 静态文件访问路径
-    publicPath: '/',
+    publicPath: './',
 
     //输出文件的地址
     path: context,
@@ -43,60 +43,7 @@ let webpackConfig = {
     }
   },
 
-  module: {
-    rules: [
-      //linter:standard
-      {
-        test: /\.(jsx?|vue)$/,
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        include: context
-      },
-
-      //babel
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        include: context,
-        options: {
-          cacheDirectory: true
-        }
-      },
-
-      //"file" loader for svg
-      {
-        test: /\.svg$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[hash:8].[ext]'
-        }
-      },
-
-      //模版
-      {
-        test: /\.html$/,
-        loader: 'html-loader'
-      },
-
-      //其他
-      {
-        exclude: [
-          /\.html$/,
-          /\.vue$/,
-          /\.(js|jsx)$/,
-          /\.css$/,
-          /\.styl$/,
-          /\.json$/,
-          /\.svg$/
-        ],
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: '[name].[hash:8].[ext]'
-        }
-      }
-    ]
-  }
+  module: {}
 };
 
 //用户自定义的文件入口
@@ -135,6 +82,63 @@ function resolveEntry (filePath) {
 if (!commonsChunkPath) {
   console.log(chalk.bold.red('\n[wag][build]编译失败,没有可编译的模块\n'));
   process.exit(1);
+}
+
+webpackConfig.module = {
+  rules: [
+    //linter:standard
+    {
+      test: /\.(jsx?|vue)$/,
+      enforce: 'pre',
+      loader: 'eslint-loader',
+      include: context
+    },
+
+    //babel
+    {
+      test: /\.jsx?$/,
+      loader: 'babel-loader',
+      include: context,
+      options: {
+        cacheDirectory: true
+      }
+    },
+
+    //"file" loader for svg
+    {
+      test: /\.svg$/,
+      loader: 'file-loader',
+      options: {
+        outputPath: commonsChunkPath + '/',
+        name: '[name].[hash:8].[ext]'
+      }
+    },
+
+    //模版
+    {
+      test: /\.html$/,
+      loader: 'html-loader'
+    },
+
+    //其他
+    {
+      exclude: [
+        /\.html$/,
+        /\.vue$/,
+        /\.(js|jsx)$/,
+        /\.css$/,
+        /\.styl$/,
+        /\.json$/,
+        /\.svg$/
+      ],
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        outputPath: commonsChunkPath + '/',
+        name: '[name].[hash:8].[ext]'
+      }
+    }
+  ]
 }
 
 module.exports = {
