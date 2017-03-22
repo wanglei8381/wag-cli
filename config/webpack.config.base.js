@@ -38,7 +38,8 @@ let webpackConfig = {
     alias: {
       //vue默认是 runtime-only, 改成 standalone
       'vue$': 'vue/dist/vue.common.js',
-      'components': path.join(dirname, 'components')
+      'components': path.join(dirname, 'components'),
+      'pages': path.join(dirname, 'pages')
     }
   },
 
