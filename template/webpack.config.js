@@ -15,13 +15,13 @@ module.exports = {
   // 是否提取css,默认不提取
   "extractCSS": true,
   // 是否生成source-map
-  "devtool": "source-map",
+  "devtool": "#source-map",
 
   /**  开发配置  **/
   // 入口文件
   "index": "pages/home/index.html",
   // 静态资源目录,默认index的上级目录
-  "staticPath": "pages/home",
+  "staticPath": "./",
   // 端口默认8080
   "port": 8080,
   // 自动打开浏览器
@@ -30,10 +30,7 @@ module.exports = {
   "proxyTable": {
     '/api': {
       target: 'http://127.0.0.1:3000',
-      changeOrigin: true,
-      pathRewrite: {
-        '^/api': '/api'
-      }
+      changeOrigin: true
     }
   }
 }

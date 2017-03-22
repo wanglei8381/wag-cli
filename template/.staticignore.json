@@ -4,8 +4,10 @@
   "completelyIgnore": [
     ".idea",
     ".gitignore",
+    ".babelrc",
+    ".eslintrc.json",
     "package.json",
     "README.md",
-    "build/**"
+    "webpack.config.js"
   ]
 }

@@ -18,6 +18,7 @@ program
   .option('-c, --cover', '如果工程名存在,就覆盖掉')
   .command('dev', '开发')
   .command('build', '发布上线')
+  .option('-r, --remove', 'build之前将dist目录删掉')
   .command('start', '开发自动启动服务')
   .command('test', '测试')
   .on('--help', function () {

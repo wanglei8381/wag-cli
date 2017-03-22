@@ -15,3 +15,5 @@ Options:
 
     -h, --help     output usage information
     -V, --version  output the version number
+    -c, --cover    如果工程名存在,就覆盖掉
+    -r, --remove   build之前将dist目录删掉

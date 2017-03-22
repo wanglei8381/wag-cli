@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const program = require('commander');
 const chalk = require('chalk');
 const $path = require('path');
@@ -49,7 +47,7 @@ function createApp (root, appName) {
       test: 'wag test'
     },
     dependencies: {
-      vue: "^2.1.10"
+      vue: "2.2.1"
     },
     devDependencies: {
       "wag-cli": version
