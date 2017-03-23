@@ -109,6 +109,7 @@ webpackConfig.module = {
       test: /\.svg$/,
       loader: 'file-loader',
       options: {
+        publicPath: './',
         outputPath: commonsChunkPath + '/',
         name: '[name].[hash:8].[ext]'
       }
@@ -134,6 +135,7 @@ webpackConfig.module = {
       loader: 'url-loader',
       options: {
         limit: 10000,
+        publicPath: './',
         outputPath: commonsChunkPath + '/',
         name: '[name].[hash:8].[ext]'
       }

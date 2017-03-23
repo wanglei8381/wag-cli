@@ -86,7 +86,7 @@ module.exports = Object.assign({}, webpackConfig, {
       }
     })
   ],
-  devtool: '#cheap-module-eval-source-map',
+  devtool: '#cheap-module-source-map',
   performance: {
     hints: false
   },

@@ -3,8 +3,6 @@ process.env.NODE_ENV = 'development';
 const webpack = require('webpack');
 let webpackConfig = require('../config/webpack.config.dev');
 
-// console.log(webpackConfig)
-
 webpack(webpackConfig, function (err, stats) {
   if (err) {
     console.trace(err)

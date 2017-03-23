@@ -19,6 +19,9 @@ Object.keys(webpackConfig.entry).forEach(function (name) {
 })
 
 module.exports = Object.assign({}, webpackConfig, {
+  output: Object.assign({}, webpackConfig.output, {
+    publicPath: '/',
+  }),
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

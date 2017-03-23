@@ -3,17 +3,19 @@ let webpack = require("webpack");
 var autoprefixer = require('autoprefixer');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 // let ManifestPlugin = require("webpack-manifest-plugin");
-// let HtmlWebpackPlugin = require('html-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 let webpackConfig = require("./webpack.config.base").webpackConfig;
 let devModuleRules = require("./webpack.config.dev").module.rules;
 let commonsChunkPath = require("./webpack.config.base").commonsChunkPath;
 let userConfig = require("./webpack.config.base").userConfig;
 let context = webpackConfig.context
 const dirname = process.cwd();
+let publicDomain = '//static.wuage.com/'
+let publicPath = publicDomain + path.basename(dirname).replace('style-', '') + '/'
 
 let config = module.exports = Object.assign({}, webpackConfig, {
   output: Object.assign({}, webpackConfig.output, {
-
+    publicPath: publicPath,
     // 输出的文件名 hash统一生成,chunkhash变化生成
     filename: userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].js' : '[name].js'
 
@@ -125,22 +127,6 @@ let config = module.exports = Object.assign({}, webpackConfig, {
       minimize: true
     }),
 
-    //引入模版文件
-    // new HtmlWebpackPlugin({
-    //   template: './index.html',
-    //   minify: {
-    //     quoteCharacter: '"',
-    //     collapseWhitespace: true,
-    //     removeRedundantAttributes: true,
-    //     useShortDoctype: true,
-    //     removeEmptyAttributes: true,
-    //     removeStyleLinkTypeAttributes: true,
-    //     minifyJS: true,
-    //     minifyCSS: true,
-    //     minifyURLs: true
-    //   }
-    // }),
-
     // new ManifestPlugin({
     //   fileName: 'asset-manifest.json'
     // })
@@ -169,5 +155,27 @@ if (userConfig.extractCSS) {
   config.plugins.push(
     //提取css,生成对应对文件
     new ExtractTextPlugin(userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css')
+  )
+}
+
+if (userConfig.index) {
+  let filename = path.join(commonsChunkPath, 'index.html')
+  config.plugins.push(
+    //引入模版文件
+    new HtmlWebpackPlugin({
+      filename: filename,
+      template: './' + userConfig.index,
+      minify: {
+        quoteCharacter: '"',
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
+      }
+    })
   )
 }
