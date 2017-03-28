@@ -1,4 +1,7 @@
 #wag-cli
+
+Install: npm install -g wag-cli
+
 Usage: wag [options] [value ...]
 
 Commands:
