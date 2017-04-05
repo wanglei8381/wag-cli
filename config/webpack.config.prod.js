@@ -9,9 +9,12 @@ let devModuleRules = require("./webpack.config.dev").module.rules;
 let commonsChunkPath = require("./webpack.config.base").commonsChunkPath;
 let userConfig = require("./webpack.config.base").userConfig;
 let context = webpackConfig.context
-const dirname = process.cwd();
-let publicDomain = '//static.wuage.com/'
-let publicPath = publicDomain + path.basename(dirname).replace('style-', '') + '/'
+let publicPath = userConfig.publicPath
+// 默认自己公司的配置
+if (!publicPath) {
+  let publicDomain = '//static.wuage.com/'
+  publicPath = publicDomain + path.basename(context).replace('style-', '') + '/'
+}
 
 let config = module.exports = Object.assign({}, webpackConfig, {
   output: Object.assign({}, webpackConfig.output, {

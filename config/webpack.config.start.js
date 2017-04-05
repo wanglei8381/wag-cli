@@ -6,9 +6,9 @@ let $path = require('path');
 let FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const chalk = require('chalk');
 let userConfig = require('../config/webpack.config.base').userConfig;
-const dirname = process.cwd();
+let context = require('../config/webpack.config.base').webpackConfig.context;
 
-if (!userConfig.index || !util.isFile($path.resolve(dirname, userConfig.index))) {
+if (!userConfig.index || !util.isFile($path.resolve(context, userConfig.index))) {
   console.log(chalk.bold.red('\n[wag][start]webpack.config的index配置不正确\n'));
   process.exit(1)
 }

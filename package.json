@@ -1,6 +1,6 @@
 {
   "name": "wag-cli",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "bin": {
     "wag": "bin/wag.js"
   },
@@ -44,13 +44,13 @@
     "url-loader": "^0.5.7",
     "vue-loader": "^11.0.0",
     "vue-style-loader": "^2.0.0",
-    "vue-template-compiler": "^2.2.1",
+    "vue-template-compiler": "^2.2.6",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-manifest-plugin": "^1.1.0"
   },
   "devDependencies": {
-    "vue": "^2.2.1"
+    "vue": "^2.2.6"
   }
 }

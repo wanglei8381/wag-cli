@@ -16,8 +16,12 @@ module.exports = {
   "extractCSS": true,
   // 是否生成source-map
   "devtool": "#source-map",
+  // 线上访问地址
+  "publicPath": "/",
 
   /**  开发配置  **/
+  // 上下文,默认当前目录
+  "context": '/',
   // 入口文件
   "index": "pages/home/index.html",
   // 静态资源目录,默认index的上级目录

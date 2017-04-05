@@ -4,6 +4,7 @@ const $path = require('path');
 const fs = require('fs-extra');
 const util = require('../util/util');
 const version = require('../package.json').version;
+const vueVersion = require('../package.json').devDependencies.vue;
 
 let projectName;
 //定义参数,以及参数内容的描述
@@ -37,7 +38,7 @@ function createApp (root, appName) {
 
   const packageJson = {
     name: appName,
-    description: "",
+    description: "A new project",
     version: '1.0.0',
     private: true,
     scripts: {
@@ -47,7 +48,7 @@ function createApp (root, appName) {
       test: 'wag test'
     },
     dependencies: {
-      vue: "2.2.1"
+      vue: vueVersion
     },
     devDependencies: {
       "wag-cli": version

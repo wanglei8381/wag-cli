@@ -5,8 +5,9 @@ const util = require('../util/util');
 const chalk = require('chalk');
 
 const dirname = process.cwd();
-const context = dirname;
-let userConfig;
+// 用户自定义的文件入口
+let userConfig = require(path.resolve(dirname, 'webpack.config'));
+const context = userConfig.context || dirname;
 let commonsChunkPath;
 
 let webpackConfig = {
@@ -38,16 +39,14 @@ let webpackConfig = {
     alias: {
       //vue默认是 runtime-only, 改成 standalone
       'vue$': 'vue/dist/vue.common.js',
-      'components': path.join(dirname, 'components'),
-      'pages': path.join(dirname, 'pages')
+      'components': path.join(context, 'components'),
+      'pages': path.join(context, 'pages')
     }
   },
 
   module: {}
 };
 
-//用户自定义的文件入口
-userConfig = require(path.resolve(dirname, 'webpack.config'));
 _.forEach(userConfig.files, function (val, filePath) {
   if (val) {
     if (!_.includes(filePath, 'src')) {
@@ -57,7 +56,7 @@ _.forEach(userConfig.files, function (val, filePath) {
   }
 });
 
-//处理文件入口问题
+// 处理文件入口问题
 function resolveEntry (filePath) {
   let entryPath = filePath;
 
@@ -91,6 +90,7 @@ webpackConfig.module = {
       test: /\.(jsx?|vue)$/,
       enforce: 'pre',
       loader: 'eslint-loader',
+      exclude: /node_modules/,
       include: context
     },
 
