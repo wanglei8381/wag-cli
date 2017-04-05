@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  background: url("./demo.png");
+}
+
+.svg {
+  background: url("./lei.svg");
+}

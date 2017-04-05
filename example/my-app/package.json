@@ -1,0 +1,17 @@
+{
+  "name": "my-app",
+  "description": "",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wag dev",
+    "start": "wag start",
+    "build": "wag build",
+    "test": "wag test"
+  },
+  "dependencies": {
+    "postcss-loader": "^1.3.2",
+    "vue": "^2.1.10"
+  },
+  "devDependencies": {}
+}
