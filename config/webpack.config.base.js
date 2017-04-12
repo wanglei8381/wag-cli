@@ -40,7 +40,8 @@ let webpackConfig = {
       //vue默认是 runtime-only, 改成 standalone
       'vue$': 'vue/dist/vue.common.js',
       'components': path.join(context, 'components'),
-      'pages': path.join(context, 'pages')
+      'pages': path.join(context, 'pages'),
+      '@': path.resolve(context)
     }
   },
 

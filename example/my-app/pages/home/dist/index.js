@@ -1,41 +1,41 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
+
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -46,7 +46,7 @@
 /******/ 			});
 /******/ 		}
 /******/ 	};
-/******/
+
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -55,330 +55,19 @@
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-/******/
+
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "./";
-/******/
+
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/* unknown exports provided */
-/* all exports used */
-/*!************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/utils.js ***!
-  \************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bind = __webpack_require__(/*! ./helpers/bind */ 7);
-
-/*global toString:true*/
-
-// utils is a library of generic helper functions non-specific to axios
-
-var toString = Object.prototype.toString;
-
-/**
- * Determine if a value is an Array
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Array, otherwise false
- */
-function isArray(val) {
-  return toString.call(val) === '[object Array]';
-}
-
-/**
- * Determine if a value is an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an ArrayBuffer, otherwise false
- */
-function isArrayBuffer(val) {
-  return toString.call(val) === '[object ArrayBuffer]';
-}
-
-/**
- * Determine if a value is a FormData
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an FormData, otherwise false
- */
-function isFormData(val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData);
-}
-
-/**
- * Determine if a value is a view on an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
- */
-function isArrayBufferView(val) {
-  var result;
-  if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
-    result = ArrayBuffer.isView(val);
-  } else {
-    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
-  }
-  return result;
-}
-
-/**
- * Determine if a value is a String
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a String, otherwise false
- */
-function isString(val) {
-  return typeof val === 'string';
-}
-
-/**
- * Determine if a value is a Number
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Number, otherwise false
- */
-function isNumber(val) {
-  return typeof val === 'number';
-}
-
-/**
- * Determine if a value is undefined
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if the value is undefined, otherwise false
- */
-function isUndefined(val) {
-  return typeof val === 'undefined';
-}
-
-/**
- * Determine if a value is an Object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Object, otherwise false
- */
-function isObject(val) {
-  return val !== null && typeof val === 'object';
-}
-
-/**
- * Determine if a value is a Date
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Date, otherwise false
- */
-function isDate(val) {
-  return toString.call(val) === '[object Date]';
-}
-
-/**
- * Determine if a value is a File
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a File, otherwise false
- */
-function isFile(val) {
-  return toString.call(val) === '[object File]';
-}
-
-/**
- * Determine if a value is a Blob
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Blob, otherwise false
- */
-function isBlob(val) {
-  return toString.call(val) === '[object Blob]';
-}
-
-/**
- * Determine if a value is a Function
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Function, otherwise false
- */
-function isFunction(val) {
-  return toString.call(val) === '[object Function]';
-}
-
-/**
- * Determine if a value is a Stream
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Stream, otherwise false
- */
-function isStream(val) {
-  return isObject(val) && isFunction(val.pipe);
-}
-
-/**
- * Determine if a value is a URLSearchParams object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a URLSearchParams object, otherwise false
- */
-function isURLSearchParams(val) {
-  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
-}
-
-/**
- * Trim excess whitespace off the beginning and end of a string
- *
- * @param {String} str The String to trim
- * @returns {String} The String freed of excess whitespace
- */
-function trim(str) {
-  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-}
-
-/**
- * Determine if we're running in a standard browser environment
- *
- * This allows axios to run in a web worker, and react-native.
- * Both environments support XMLHttpRequest, but not fully standard globals.
- *
- * web workers:
- *  typeof window -> undefined
- *  typeof document -> undefined
- *
- * react-native:
- *  typeof document.createElement -> undefined
- */
-function isStandardBrowserEnv() {
-  return (
-    typeof window !== 'undefined' &&
-    typeof document !== 'undefined' &&
-    typeof document.createElement === 'function'
-  );
-}
-
-/**
- * Iterate over an Array or an Object invoking a function for each item.
- *
- * If `obj` is an Array callback will be called passing
- * the value, index, and complete array for each item.
- *
- * If 'obj' is an Object callback will be called passing
- * the value, key, and complete object for each property.
- *
- * @param {Object|Array} obj The object to iterate
- * @param {Function} fn The callback to invoke for each item
- */
-function forEach(obj, fn) {
-  // Don't bother if no value provided
-  if (obj === null || typeof obj === 'undefined') {
-    return;
-  }
-
-  // Force an array if not already something iterable
-  if (typeof obj !== 'object' && !isArray(obj)) {
-    /*eslint no-param-reassign:0*/
-    obj = [obj];
-  }
-
-  if (isArray(obj)) {
-    // Iterate over array values
-    for (var i = 0, l = obj.length; i < l; i++) {
-      fn.call(null, obj[i], i, obj);
-    }
-  } else {
-    // Iterate over object keys
-    for (var key in obj) {
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        fn.call(null, obj[key], key, obj);
-      }
-    }
-  }
-}
-
-/**
- * Accepts varargs expecting each argument to be an object, then
- * immutably merges the properties of each object and returns result.
- *
- * When multiple objects contain the same key the later object in
- * the arguments list will take precedence.
- *
- * Example:
- *
- * ```js
- * var result = merge({foo: 123}, {foo: 456});
- * console.log(result.foo); // outputs 456
- * ```
- *
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function merge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Extends object a by mutably adding to it the properties of object b.
- *
- * @param {Object} a The object to be extended
- * @param {Object} b The object to copy properties from
- * @param {Object} thisArg The object to bind function to
- * @return {Object} The resulting value of object a
- */
-function extend(a, b, thisArg) {
-  forEach(b, function assignValue(val, key) {
-    if (thisArg && typeof val === 'function') {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
-    }
-  });
-  return a;
-}
-
-module.exports = {
-  isArray: isArray,
-  isArrayBuffer: isArrayBuffer,
-  isFormData: isFormData,
-  isArrayBufferView: isArrayBufferView,
-  isString: isString,
-  isNumber: isNumber,
-  isObject: isObject,
-  isUndefined: isUndefined,
-  isDate: isDate,
-  isFile: isFile,
-  isBlob: isBlob,
-  isFunction: isFunction,
-  isStream: isStream,
-  isURLSearchParams: isURLSearchParams,
-  isStandardBrowserEnv: isStandardBrowserEnv,
-  forEach: forEach,
-  merge: merge,
-  extend: extend,
-  trim: trim
-};
-
-
-/***/ }),
-/* 1 */
 /* unknown exports provided */
 /* all exports used */
 /*!********************************************************************!*\
@@ -439,402 +128,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 2 */
-/* unknown exports provided */
-/* all exports used */
-/*!***************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/defaults.js ***!
-  \***************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(/*! ./utils */ 0);
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 33);
-
-var PROTECTION_PREFIX = /^\)\]\}',?\n/;
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ 3);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ 3);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      data = data.replace(PROTECTION_PREFIX, '');
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMehtodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../.config/yarn/global/~/process/browser.js */ 17)))
-
-/***/ }),
-/* 3 */
-/* unknown exports provided */
-/* all exports used */
-/*!*******************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/adapters/xhr.js ***!
-  \*******************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-var settle = __webpack_require__(/*! ./../core/settle */ 25);
-var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 28);
-var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 34);
-var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 32);
-var createError = __webpack_require__(/*! ../core/createError */ 6);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ 27);
-
-module.exports = function xhrAdapter(config) {
-  return new Promise(function dispatchXhrRequest(resolve, reject) {
-    var requestData = config.data;
-    var requestHeaders = config.headers;
-
-    if (utils.isFormData(requestData)) {
-      delete requestHeaders['Content-Type']; // Let the browser set it
-    }
-
-    var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ("development" !== 'test' &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
-
-    // HTTP basic authentication
-    if (config.auth) {
-      var username = config.auth.username || '';
-      var password = config.auth.password || '';
-      requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
-    }
-
-    request.open(config.method.toUpperCase(), buildURL(config.url, config.params, config.paramsSerializer), true);
-
-    // Set the request timeout in MS
-    request.timeout = config.timeout;
-
-    // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
-        return;
-      }
-
-      // The request errored out and we didn't get a response, this will be
-      // handled by onerror instead
-      // With one exception: request that using file: protocol, most browsers
-      // will return status as 0 even though it's a successful request
-      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-        return;
-      }
-
-      // Prepare the response
-      var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
-      var response = {
-        data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/mzabriskie/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
-        headers: responseHeaders,
-        config: config,
-        request: request
-      };
-
-      settle(resolve, reject, response);
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle low level network errors
-    request.onerror = function handleError() {
-      // Real errors are hidden from us by the browser
-      // onerror should only fire if it's a network error
-      reject(createError('Network Error', config));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Handle timeout
-    request.ontimeout = function handleTimeout() {
-      reject(createError('timeout of ' + config.timeout + 'ms exceeded', config, 'ECONNABORTED'));
-
-      // Clean up request
-      request = null;
-    };
-
-    // Add xsrf header
-    // This is only done if running in a standard browser environment.
-    // Specifically not if we're in a web worker, or react-native.
-    if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 30);
-
-      // Add xsrf header
-      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
-          cookies.read(config.xsrfCookieName) :
-          undefined;
-
-      if (xsrfValue) {
-        requestHeaders[config.xsrfHeaderName] = xsrfValue;
-      }
-    }
-
-    // Add headers to the request
-    if ('setRequestHeader' in request) {
-      utils.forEach(requestHeaders, function setRequestHeader(val, key) {
-        if (typeof requestData === 'undefined' && key.toLowerCase() === 'content-type') {
-          // Remove Content-Type if data is undefined
-          delete requestHeaders[key];
-        } else {
-          // Otherwise add header to the request
-          request.setRequestHeader(key, val);
-        }
-      });
-    }
-
-    // Add withCredentials to request if needed
-    if (config.withCredentials) {
-      request.withCredentials = true;
-    }
-
-    // Add responseType to request if needed
-    if (config.responseType) {
-      try {
-        request.responseType = config.responseType;
-      } catch (e) {
-        if (request.responseType !== 'json') {
-          throw e;
-        }
-      }
-    }
-
-    // Handle progress if needed
-    if (typeof config.onDownloadProgress === 'function') {
-      request.addEventListener('progress', config.onDownloadProgress);
-    }
-
-    // Not all browsers support upload events
-    if (typeof config.onUploadProgress === 'function' && request.upload) {
-      request.upload.addEventListener('progress', config.onUploadProgress);
-    }
-
-    if (config.cancelToken) {
-      // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled(cancel) {
-        if (!request) {
-          return;
-        }
-
-        request.abort();
-        reject(cancel);
-        // Clean up request
-        request = null;
-      });
-    }
-
-    if (requestData === undefined) {
-      requestData = null;
-    }
-
-    // Send the request
-    request.send(requestData);
-  });
-};
-
-
-/***/ }),
-/* 4 */
-/* unknown exports provided */
-/* all exports used */
-/*!********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/cancel/Cancel.js ***!
-  \********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * A `Cancel` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- */
-function Cancel(message) {
-  this.message = message;
-}
-
-Cancel.prototype.toString = function toString() {
-  return 'Cancel' + (this.message ? ': ' + this.message : '');
-};
-
-Cancel.prototype.__CANCEL__ = true;
-
-module.exports = Cancel;
-
-
-/***/ }),
-/* 5 */
-/* unknown exports provided */
-/* all exports used */
-/*!**********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/cancel/isCancel.js ***!
-  \**********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function isCancel(value) {
-  return !!(value && value.__CANCEL__);
-};
-
-
-/***/ }),
-/* 6 */
-/* unknown exports provided */
-/* all exports used */
-/*!***********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/createError.js ***!
-  \***********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var enhanceError = __webpack_require__(/*! ./enhanceError */ 24);
-
-/**
- * Create an Error with the specified message, config, error code, and response.
- *
- * @param {string} message The error message.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- @ @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
-module.exports = function createError(message, config, code, response) {
-  var error = new Error(message);
-  return enhanceError(error, config, code, response);
-};
-
-
-/***/ }),
-/* 7 */
-/* unknown exports provided */
-/* all exports used */
-/*!*******************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/bind.js ***!
-  \*******************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function bind(fn, thisArg) {
-  return function wrap() {
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-    return fn.apply(thisArg, args);
-  };
-};
-
-
-/***/ }),
-/* 8 */
+/* 1 */
 /* unknown exports provided */
 /* all exports used */
 /*!*****************************************************************************!*\
@@ -1091,7 +385,7 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 9 */
+/* 2 */
 /* unknown exports provided */
 /* all exports used */
 /*!******************************************************************************************!*\
@@ -1149,7 +443,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 10 */
+/* 3 */
 /* unknown exports provided */
 /* all exports used */
 /*!*******************************************************************************************!*\
@@ -1173,7 +467,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(/*! ./listToStyles */ 49)
+var listToStyles = __webpack_require__(/*! ./listToStyles */ 22)
 
 /*
 type StyleObject = {
@@ -1390,18 +684,33 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 11 */
+/* 4 */
 /* unknown exports provided */
 /* all exports used */
-/*!********************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/index.js ***!
-  \********************************************************/
+/*!****************!*\
+  !*** ./app.js ***!
+  \****************/
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./lib/axios */ 19);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/**
+ * 标题
+ * 描述
+ * 创建日期 2017/4/11 上午11:17
+ * 作者 lei.wang@wuage.com
+ * 版本 0.0.1
+ */
+exports.default = {
+  name: 'app'
+};
 
 /***/ }),
-/* 12 */
+/* 5 */
 /* unknown exports provided */
 /* all exports used */
 /*!**********************************!*\
@@ -1412,10 +721,10 @@ module.exports = __webpack_require__(/*! ./lib/axios */ 19);
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !./../../../../../../../~/.0.23.1@css-loader!./../../../../../../../~/postcss-loader??postcss!./style.css */ 36);
+var content = __webpack_require__(/*! !./../../../../../../../~/.0.23.1@css-loader!./../../../../../../../~/postcss-loader??postcss!./style.css */ 10);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 8)(content, {});
+var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 1)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1432,7 +741,7 @@ if(false) {
 }
 
 /***/ }),
-/* 13 */
+/* 6 */
 /* unknown exports provided */
 /* all exports used */
 /*!***********************************!*\
@@ -1443,10 +752,10 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !./../../../../../../../~/.0.23.1@css-loader!./../../../../../~/stylus-loader!./../../../../../../../~/postcss-loader??postcss!./style.styl */ 37);
+var content = __webpack_require__(/*! !./../../../../../../../~/.0.23.1@css-loader!./../../../../../~/stylus-loader!./../../../../../../../~/postcss-loader??postcss!./style.styl */ 11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 8)(content, {});
+var update = __webpack_require__(/*! ./../../../../../~/style-loader/addStyles.js */ 1)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1463,7 +772,7 @@ if(false) {
 }
 
 /***/ }),
-/* 14 */
+/* 7 */
 /* unknown exports provided */
 /* all exports used */
 /*!*******************************!*\
@@ -1473,13 +782,13 @@ if(false) {
 
 
 /* styles */
-__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!./../../../~/vue-loader/lib/style-rewriter?{"id":"data-v-022b5ff6","scoped":true,"hasInlineConfig":true}!stylus-loader!./../../../~/vue-loader/lib/selector?type=styles&index=0!./Header.vue */ 47)
+__webpack_require__(/*! !vue-style-loader!css-loader?sourceMap!./../../../~/vue-loader/lib/style-rewriter?{"id":"data-v-022b5ff6","scoped":true,"hasInlineConfig":true}!stylus-loader!./../../../~/vue-loader/lib/selector?type=styles&index=0!./Header.vue */ 20)
 
-var Component = __webpack_require__(/*! ./../../../~/vue-loader/lib/component-normalizer */ 9)(
+var Component = __webpack_require__(/*! ./../../../~/vue-loader/lib/component-normalizer */ 2)(
   /* script */
-  __webpack_require__(/*! !babel-loader!./../../../~/vue-loader/lib/selector?type=script&index=0!./Header.vue */ 40),
+  __webpack_require__(/*! !babel-loader!./../../../~/vue-loader/lib/selector?type=script&index=0!./Header.vue */ 14),
   /* template */
-  __webpack_require__(/*! !./../../../~/vue-loader/lib/template-compiler?{"id":"data-v-022b5ff6"}!./../../../~/vue-loader/lib/selector?type=template&index=0!./Header.vue */ 45),
+  __webpack_require__(/*! !./../../../~/vue-loader/lib/template-compiler?{"id":"data-v-022b5ff6"}!./../../../~/vue-loader/lib/selector?type=template&index=0!./Header.vue */ 18),
   /* scopeId */
   "data-v-022b5ff6",
   /* cssModules */
@@ -1506,7 +815,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 15 */
+/* 8 */
 /* unknown exports provided */
 /* all exports used */
 /*!******************************!*\
@@ -1517,13 +826,13 @@ module.exports = Component.exports
 
 /* styles */
 var cssModules = {}
-cssModules["$style"] = __webpack_require__(/*! !vue-style-loader!css-loader?{"sourceMap":true,"localIdentName":"[hash:base64]_0","modules":true,"importLoaders":true}!./../../../~/vue-loader/lib/style-rewriter?{"id":"data-v-6cb79d0a","scoped":false,"hasInlineConfig":true}!./../../../~/vue-loader/lib/selector?type=styles&index=0!./Hello.vue */ 48)
+cssModules["$style"] = __webpack_require__(/*! !vue-style-loader!css-loader?{"sourceMap":true,"localIdentName":"[hash:base64]_0","modules":true,"importLoaders":true}!./../../../~/vue-loader/lib/style-rewriter?{"id":"data-v-6cb79d0a","scoped":false,"hasInlineConfig":true}!./../../../~/vue-loader/lib/selector?type=styles&index=0!./Hello.vue */ 21)
 
-var Component = __webpack_require__(/*! ./../../../~/vue-loader/lib/component-normalizer */ 9)(
+var Component = __webpack_require__(/*! ./../../../~/vue-loader/lib/component-normalizer */ 2)(
   /* script */
-  __webpack_require__(/*! !babel-loader!./../../../~/vue-loader/lib/selector?type=script&index=0!./Hello.vue */ 41),
+  __webpack_require__(/*! !babel-loader!./../../../~/vue-loader/lib/selector?type=script&index=0!./Hello.vue */ 15),
   /* template */
-  __webpack_require__(/*! !./../../../~/vue-loader/lib/template-compiler?{"id":"data-v-6cb79d0a"}!./../../../~/vue-loader/lib/selector?type=template&index=0!./Hello.vue */ 46),
+  __webpack_require__(/*! !./../../../~/vue-loader/lib/template-compiler?{"id":"data-v-6cb79d0a"}!./../../../~/vue-loader/lib/selector?type=template&index=0!./Hello.vue */ 19),
   /* scopeId */
   null,
   /* cssModules */
@@ -1556,7 +865,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 16 */
+/* 9 */
 /* unknown exports provided */
 /* all exports used */
 /*!**************************************************************************!*\
@@ -10134,1153 +9443,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../../../../../.config/yarn/global/~/webpack/buildin/global.js */ 18)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./../../webpack/buildin/global.js */ 23)))
 
 /***/ }),
-/* 17 */
-/* unknown exports provided */
-/* all exports used */
-/*!***************************************************************!*\
-  !*** /Users/wanglei/.config/yarn/global/~/process/browser.js ***!
-  \***************************************************************/
-/***/ (function(module, exports) {
-
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 18 */
-/* unknown exports provided */
-/* all exports used */
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 19 */
-/* unknown exports provided */
-/* all exports used */
-/*!************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/axios.js ***!
-  \************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./utils */ 0);
-var bind = __webpack_require__(/*! ./helpers/bind */ 7);
-var Axios = __webpack_require__(/*! ./core/Axios */ 21);
-var defaults = __webpack_require__(/*! ./defaults */ 2);
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(utils.merge(defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 4);
-axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 20);
-axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 5);
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = __webpack_require__(/*! ./helpers/spread */ 35);
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-
-/***/ }),
-/* 20 */
-/* unknown exports provided */
-/* all exports used */
-/*!*************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/cancel/CancelToken.js ***!
-  \*************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(/*! ./Cancel */ 4);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-/* 21 */
-/* unknown exports provided */
-/* all exports used */
-/*!*****************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/Axios.js ***!
-  \*****************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(/*! ./../defaults */ 2);
-var utils = __webpack_require__(/*! ./../utils */ 0);
-var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 22);
-var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 23);
-var isAbsoluteURL = __webpack_require__(/*! ./../helpers/isAbsoluteURL */ 31);
-var combineURLs = __webpack_require__(/*! ./../helpers/combineURLs */ 29);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-/* 22 */
-/* unknown exports provided */
-/* all exports used */
-/*!******************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/InterceptorManager.js ***!
-  \******************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 23 */
-/* unknown exports provided */
-/* all exports used */
-/*!***************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/dispatchRequest.js ***!
-  \***************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-var transformData = __webpack_require__(/*! ./transformData */ 26);
-var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 5);
-var defaults = __webpack_require__(/*! ../defaults */ 2);
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-
-/***/ }),
-/* 24 */
-/* unknown exports provided */
-/* all exports used */
-/*!************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/enhanceError.js ***!
-  \************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- @ @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-/* 25 */
-/* unknown exports provided */
-/* all exports used */
-/*!******************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/settle.js ***!
-  \******************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(/*! ./createError */ 6);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-/* 26 */
-/* unknown exports provided */
-/* all exports used */
-/*!*************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/core/transformData.js ***!
-  \*************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-
-/***/ }),
-/* 27 */
-/* unknown exports provided */
-/* all exports used */
-/*!*******************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/btoa.js ***!
-  \*******************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-/* 28 */
-/* unknown exports provided */
-/* all exports used */
-/*!***********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/buildURL.js ***!
-  \***********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-/* 29 */
-/* unknown exports provided */
-/* all exports used */
-/*!**************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/combineURLs.js ***!
-  \**************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
-};
-
-
-/***/ }),
-/* 30 */
-/* unknown exports provided */
-/* all exports used */
-/*!**********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/cookies.js ***!
-  \**********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-  (function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        var cookie = [];
-        cookie.push(name + '=' + encodeURIComponent(value));
-
-        if (utils.isNumber(expires)) {
-          cookie.push('expires=' + new Date(expires).toGMTString());
-        }
-
-        if (utils.isString(path)) {
-          cookie.push('path=' + path);
-        }
-
-        if (utils.isString(domain)) {
-          cookie.push('domain=' + domain);
-        }
-
-        if (secure === true) {
-          cookie.push('secure');
-        }
-
-        document.cookie = cookie.join('; ');
-      },
-
-      read: function read(name) {
-        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
-      },
-
-      remove: function remove(name) {
-        this.write(name, '', Date.now() - 86400000);
-      }
-    };
-  })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return {
-      write: function write() {},
-      read: function read() { return null; },
-      remove: function remove() {}
-    };
-  })()
-);
-
-
-/***/ }),
-/* 31 */
-/* unknown exports provided */
-/* all exports used */
-/*!****************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/isAbsoluteURL.js ***!
-  \****************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-
-/***/ }),
-/* 32 */
-/* unknown exports provided */
-/* all exports used */
-/*!******************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/isURLSameOrigin.js ***!
-  \******************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
-    var urlParsingNode = document.createElement('a');
-    var originURL;
-
-    /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-    function resolveURL(url) {
-      var href = url;
-
-      if (msie) {
-        // IE needs attribute set twice to normalize properties
-        urlParsingNode.setAttribute('href', href);
-        href = urlParsingNode.href;
-      }
-
-      urlParsingNode.setAttribute('href', href);
-
-      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-                  urlParsingNode.pathname :
-                  '/' + urlParsingNode.pathname
-      };
-    }
-
-    originURL = resolveURL(window.location.href);
-
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-    return function isURLSameOrigin(requestURL) {
-      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-      return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-    };
-  })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  })()
-);
-
-
-/***/ }),
-/* 33 */
-/* unknown exports provided */
-/* all exports used */
-/*!**********************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/normalizeHeaderName.js ***!
-  \**********************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ../utils */ 0);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-/* 34 */
-/* unknown exports provided */
-/* all exports used */
-/*!***************************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/parseHeaders.js ***!
-  \***************************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(/*! ./../utils */ 0);
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-/* 35 */
-/* unknown exports provided */
-/* all exports used */
-/*!*********************************************************************!*\
-  !*** /Users/wanglei/platform/~/.0.15.3@axios/lib/helpers/spread.js ***!
-  \*********************************************************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-
-/***/ }),
-/* 36 */
+/* 10 */
 /* unknown exports provided */
 /* all exports used */
 /*!********************************************************************************************************************************************!*\
@@ -11288,18 +9454,18 @@ module.exports = function spread(callback) {
   \********************************************************************************************************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ./../../../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 1)();
+exports = module.exports = __webpack_require__(/*! ./../../../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 0)();
 // imports
 
 
 // module
-exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n\n.img {\n  background: url(" + __webpack_require__(/*! ./demo.png */ 44) + ");\n}\n\n.svg {\n  background: url(" + __webpack_require__(/*! ./lei.svg */ 43) + ");\n}", ""]);
+exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: column;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n\n.img {\n  background: url(" + __webpack_require__(/*! ./demo.png */ 17) + ");\n}\n\n.svg {\n  background: url(" + __webpack_require__(/*! ./lei.svg */ 16) + ");\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 37 */
+/* 11 */
 /* unknown exports provided */
 /* all exports used */
 /*!*******************************************************************************************************************************************************************************************************!*\
@@ -11307,7 +9473,7 @@ exports.push([module.i, ".container {\n  display: -webkit-box;\n  display: -webk
   \*******************************************************************************************************************************************************************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ./../../../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 1)();
+exports = module.exports = __webpack_require__(/*! ./../../../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 0)();
 // imports
 
 
@@ -11318,7 +9484,7 @@ exports.push([module.i, ".uf {\n  display: -webkit-box;\n  display: -webkit-flex
 
 
 /***/ }),
-/* 38 */
+/* 12 */
 /* unknown exports provided */
 /* all exports used */
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -11326,7 +9492,7 @@ exports.push([module.i, ".uf {\n  display: -webkit-box;\n  display: -webkit-flex
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ./../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 1)();
+exports = module.exports = __webpack_require__(/*! ./../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 0)();
 // imports
 
 
@@ -11337,7 +9503,7 @@ exports.push([module.i, "\n.uf2[data-v-022b5ff6] {\n  display: -webkit-box;\n  d
 
 
 /***/ }),
-/* 39 */
+/* 13 */
 /* unknown exports provided */
 /* all exports used */
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -11345,18 +9511,22 @@ exports.push([module.i, "\n.uf2[data-v-022b5ff6] {\n  display: -webkit-box;\n  d
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(/*! ./../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 1)();
+exports = module.exports = __webpack_require__(/*! ./../../../../../~/.0.23.1@css-loader/lib/css-base.js */ 0)();
 // imports
 
 
 // module
-exports.push([module.i, "\nh1, h2 {\n  font-weight: normal;\n}\nul {\n  list-style-type: none;\n  padding: 0;\n}\nli {\n  display: inline-block;\n  margin: 0 10px;\n}\n", "", {"version":3,"sources":["/./components/Hello.vue?252b125a"],"names":[],"mappings":";AAkBA;EACA,oBAAA;CACA;AAEA;EACA,sBAAA;EACA,WAAA;CACA;AAEA;EACA,sBAAA;EACA,eAAA;CACA","file":"Hello.vue","sourcesContent":["<template>\n  <div class=\"hello\">\n    <h1>{{ msg }}</h1>\n  </div>\n</template>\n\n<script>\n  export default {\n    name: 'hello',\n    data () {\n      return {\n        msg: 'Welcome to Your Vue.js App'\n      }\n    }\n  }\n</script>\n\n<style module>\n  h1, h2 {\n    font-weight: normal;\n  }\n\n  ul {\n    list-style-type: none;\n    padding: 0;\n  }\n\n  li {\n    display: inline-block;\n    margin: 0 10px;\n  }\n</style>\n"],"sourceRoot":"webpack://"}]);
+exports.push([module.i, "\nh1, h2 {\n  font-weight: normal;\n}\nul {\n  list-style-type: none;\n  padding: 0;\n}\nli {\n  display: inline-block;\n  margin: 0 10px;\n}\n._2DbS4kx8ebWO3hJXQ2Vkvj_0 {\n  font-size: 30px;\n}\n._2wSFFiLOHJBitvUQpzING4_0 {\n  background-color: #dd5555;\n}\n._1-GqqEnGBmnvG9EmMFZnua_0 {\n  color: #00a000;\n}\n.container {\n  width: 800px;\n  margin: auto;\n}\n\n", "", {"version":3,"sources":["/./components/Hello.vue?57550972"],"names":[],"mappings":";AAkBA;EACA,oBAAA;CACA;AAEA;EACA,sBAAA;EACA,WAAA;CACA;AAEA;EACA,sBAAA;EACA,eAAA;CACA;AAEA;EACA,gBAAA;CACA;AAEA;EACA,0BAAA;CACA;AAEA;EAGA,eAAA;CACA;AAEA;EACA,aAAA;EACA,aAAA;CACA","file":"Hello.vue","sourcesContent":["<template>\n  <div :class=\"$style.hello\">\n    <h1>{{ msg }}</h1>\n  </div>\n</template>\n\n<script>\n  export default {\n    name: 'hello',\n    data () {\n      return {\n        msg: 'Welcome to Your Vue.js App'\n      }\n    }\n  }\n</script>\n\n<style module>\n  h1, h2 {\n    font-weight: normal;\n  }\n\n  ul {\n    list-style-type: none;\n    padding: 0;\n  }\n\n  li {\n    display: inline-block;\n    margin: 0 10px;\n  }\n\n  .big-word {\n    font-size: 30px;\n  }\n\n  .word-bg {\n    background-color: #dd5555;\n  }\n\n  .hello {\n    composes: big-word;\n    composes: word-bg;\n    color: #00a000;\n  }\n\n  :global(.container) {\n    width: 800px;\n    margin: auto;\n  }\n\n</style>\n"],"sourceRoot":"webpack://"}]);
 
 // exports
-
+exports.locals = {
+	"big-word": "_2DbS4kx8ebWO3hJXQ2Vkvj_0",
+	"word-bg": "_2wSFFiLOHJBitvUQpzING4_0",
+	"hello": "_1-GqqEnGBmnvG9EmMFZnua_0 _2DbS4kx8ebWO3hJXQ2Vkvj_0 _2wSFFiLOHJBitvUQpzING4_0"
+};
 
 /***/ }),
-/* 40 */
+/* 14 */
 /* unknown exports provided */
 /* all exports used */
 /*!***************************************************************************************************************************************************************************************!*\
@@ -11419,7 +9589,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 41 */
+/* 15 */
 /* unknown exports provided */
 /* all exports used */
 /*!**************************************************************************************************************************************************************************************!*\
@@ -11450,78 +9620,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 42 */
-/* unknown exports provided */
-/* all exports used */
-/*!*********************************!*\
-  !*** ./pages/home/src/index.js ***!
-  \*********************************/
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _vue = __webpack_require__(/*! vue */ 16);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _axios = __webpack_require__(/*! axios */ 11);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-__webpack_require__(/*! ./style.css */ 12);
-
-__webpack_require__(/*! ./style.styl */ 13);
-
-var _Hello = __webpack_require__(/*! components/Hello */ 15);
-
-var _Hello2 = _interopRequireDefault(_Hello);
-
-var _Header = __webpack_require__(/*! components/Header */ 14);
-
-var _Header2 = _interopRequireDefault(_Header);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* eslint-disable no-new */
-
-
-/* eslint-disable no-unused-vars */
-new _vue2.default({
-  el: '#app',
-
-  render: function render(h) {
-    return h(
-      'div',
-      { 'class': 'container' },
-      [h(
-        _Header2.default,
-        null,
-        []
-      ), h(
-        _Hello2.default,
-        null,
-        []
-      )]
-    );
-  },
-
-
-  methods: {
-    request: function request() {
-      _axios2.default.get('/api').then(function (res) {
-        console.log(res);
-      });
-    }
-  },
-
-  mounted: function mounted() {
-    this.request();
-  }
-});
-
-/***/ }),
-/* 43 */
+/* 16 */
 /* unknown exports provided */
 /* all exports used */
 /*!********************************!*\
@@ -11532,7 +9631,7 @@ new _vue2.default({
 module.exports = "./lei.aa317ef2.svg";
 
 /***/ }),
-/* 44 */
+/* 17 */
 /* unknown exports provided */
 /* all exports used */
 /*!*********************************!*\
@@ -11543,7 +9642,7 @@ module.exports = "./lei.aa317ef2.svg";
 module.exports = "data:image/png;base64,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"
 
 /***/ }),
-/* 45 */
+/* 18 */
 /* unknown exports provided */
 /* all exports used */
 /*!*************************************************************************************************************************************************************************************************************************************!*\
@@ -11575,7 +9674,7 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 19 */
 /* unknown exports provided */
 /* all exports used */
 /*!************************************************************************************************************************************************************************************************************************************!*\
@@ -11585,7 +9684,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "hello"
+    class: _vm.$style.hello
   }, [_c('h1', [_vm._v(_vm._s(_vm.msg))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -11597,7 +9696,7 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 20 */
 /* unknown exports provided */
 /* all exports used */
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -11608,11 +9707,11 @@ if (false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !./../../../../../~/.0.23.1@css-loader?sourceMap!./../../../~/vue-loader/lib/style-rewriter.js?{"id":"data-v-022b5ff6","scoped":true,"hasInlineConfig":true}!./../../../~/stylus-loader!./../../../~/vue-loader/lib/selector.js?type=styles&index=0!./Header.vue */ 38);
+var content = __webpack_require__(/*! !./../../../../../~/.0.23.1@css-loader?sourceMap!./../../../~/vue-loader/lib/style-rewriter.js?{"id":"data-v-022b5ff6","scoped":true,"hasInlineConfig":true}!./../../../~/stylus-loader!./../../../~/vue-loader/lib/selector.js?type=styles&index=0!./Header.vue */ 12);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(/*! ./../../../~/vue-style-loader/lib/addStylesClient.js */ 10)("468a1fef", content, false);
+var update = __webpack_require__(/*! ./../../../~/vue-style-loader/lib/addStylesClient.js */ 3)("468a1fef", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -11628,7 +9727,7 @@ if(false) {
 }
 
 /***/ }),
-/* 48 */
+/* 21 */
 /* unknown exports provided */
 /* all exports used */
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
@@ -11639,11 +9738,11 @@ if(false) {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(/*! !./../../../../../~/.0.23.1@css-loader?{"sourceMap":true,"localIdentName":"[hash:base64]_0","modules":true,"importLoaders":true}!./../../../~/vue-loader/lib/style-rewriter.js?{"id":"data-v-6cb79d0a","scoped":false,"hasInlineConfig":true}!./../../../~/vue-loader/lib/selector.js?type=styles&index=0!./Hello.vue */ 39);
+var content = __webpack_require__(/*! !./../../../../../~/.0.23.1@css-loader?{"sourceMap":true,"localIdentName":"[hash:base64]_0","modules":true,"importLoaders":true}!./../../../~/vue-loader/lib/style-rewriter.js?{"id":"data-v-6cb79d0a","scoped":false,"hasInlineConfig":true}!./../../../~/vue-loader/lib/selector.js?type=styles&index=0!./Hello.vue */ 13);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(/*! ./../../../~/vue-style-loader/lib/addStylesClient.js */ 10)("38fa5c20", content, false);
+var update = __webpack_require__(/*! ./../../../~/vue-style-loader/lib/addStylesClient.js */ 3)("38fa5c20", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -11659,7 +9758,7 @@ if(false) {
 }
 
 /***/ }),
-/* 49 */
+/* 22 */
 /* unknown exports provided */
 /* all exports used */
 /*!****************************************************************************************!*\
@@ -11695,6 +9794,110 @@ module.exports = function listToStyles (parentId, list) {
   return styles
 }
 
+
+/***/ }),
+/* 23 */
+/* unknown exports provided */
+/* all exports used */
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 24 */
+/* unknown exports provided */
+/* all exports used */
+/*!*********************************!*\
+  !*** ./pages/home/src/index.js ***!
+  \*********************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _vue = __webpack_require__(/*! vue */ 9);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+__webpack_require__(/*! ./style.css */ 5);
+
+__webpack_require__(/*! ./style.styl */ 6);
+
+var _Hello = __webpack_require__(/*! components/Hello */ 8);
+
+var _Hello2 = _interopRequireDefault(_Hello);
+
+var _Header = __webpack_require__(/*! components/Header */ 7);
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _app = __webpack_require__(/*! @/app */ 4);
+
+var _app2 = _interopRequireDefault(_app);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable no-new */
+new _vue2.default({
+  el: '#app',
+
+  render: function render(h) {
+    return h(
+      'div',
+      { 'class': 'container' },
+      [h(
+        _Header2.default,
+        null,
+        []
+      ), h(
+        _Hello2.default,
+        null,
+        []
+      )]
+    );
+  },
+
+
+  methods: {
+    request: function request() {
+      // axios.get('/api').then((res) => {
+      //   console.log(res)
+      // })
+    }
+  },
+
+  mounted: function mounted() {
+    this.request();
+  }
+});
+
+/* eslint-disable no-unused-vars */
+
+// import axios from 'axios'
 
 /***/ })
 /******/ ]);

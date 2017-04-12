@@ -6,6 +6,7 @@ import './style.styl'
 /* eslint-disable no-unused-vars */
 import Hello from 'components/Hello'
 import Header from 'components/Header'
+import app from '@/app'
 
 /* eslint-disable no-new */
 new Vue({
