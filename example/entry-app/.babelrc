@@ -1,0 +1,15 @@
+{
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-vue-jsx",
+    "syntax-dynamic-import"
+  ]
+}

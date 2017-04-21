@@ -23,12 +23,13 @@ let webpackConfig = {
     // 静态文件访问路径
     publicPath: './',
 
-    //输出文件的地址
+    // 输出文件的地址
     path: context,
 
     // 输出的文件名 hash统一生成,chunkhash变化生成
     filename: "[name].js",
 
+    chunkFilename: "[id][chunkhash:8].chunk.js"
   },
 
   resolve: {
@@ -83,6 +84,10 @@ if (!commonsChunkPath) {
   console.log(chalk.bold.red('\n[wag][build]编译失败,没有可编译的模块\n'));
   process.exit(1);
 }
+
+// webpackConfig.output.path = path.resolve(context, commonsChunkPath)
+
+webpackConfig.output.chunkFilename = commonsChunkPath + '/' + webpackConfig.output.chunkFilename
 
 webpackConfig.module = {
   rules: [
