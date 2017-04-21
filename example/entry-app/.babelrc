@@ -9,7 +9,7 @@
     "stage-3"
   ],
   "plugins": [
-    "transform-vue-jsx",
-    "syntax-dynamic-import"
+    "syntax-dynamic-import",
+    "transform-vue-jsx"
   ]
 }
