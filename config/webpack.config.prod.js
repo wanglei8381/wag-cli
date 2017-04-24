@@ -40,17 +40,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
               fallback: "style-loader",
               use: ['css-loader', 'stylus-loader']
             })
-          },
-          postcss: [
-            autoprefixer({
-              browsers: [
-                '>1%',
-                'last 4 versions',
-                'Firefox ESR',
-                'not ie < 9', // Vue doesn't support IE8 anyway
-              ]
-            })
-          ]
+          }
         }
       },
 
@@ -59,24 +49,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ["css-loader", {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: function () {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // Vue doesn't support IE8 anyway
-                    ]
-                  })
-                ]
-              }
-            }
-          }]
+          use: ["css-loader", 'postcss-loader']
         })
       },
 
@@ -85,24 +58,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader', 'stylus-loader', {
-            loader: 'postcss-loader',
-            options: {
-              ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-              plugins: function () {
-                return [
-                  autoprefixer({
-                    browsers: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9', // Vue doesn't support IE8 anyway
-                    ]
-                  })
-                ]
-              }
-            }
-          }]
+          use: ['css-loader', 'stylus-loader', 'postcss-loader']
         })
       }
     ]) : devModuleRules

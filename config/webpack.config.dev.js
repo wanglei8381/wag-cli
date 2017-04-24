@@ -17,65 +17,19 @@ module.exports = Object.assign({}, webpackConfig, {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: context,
-        options: {
-          postcss: [
-            autoprefixer({
-              browsers: [
-                '>1%',
-                'last 4 versions',
-                'Firefox ESR',
-                'not ie < 9', // Vue doesn't support IE8 anyway
-              ]
-            })
-          ]
-        }
+        include: context
       },
 
       //css
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-            plugins: function () {
-              return [
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // Vue doesn't support IE8 anyway
-                  ]
-                })
-              ]
-            }
-          }
-        }]
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
 
       //stylus
       {
         test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader', {
-          loader: 'postcss-loader',
-          options: {
-            ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-            plugins: function () {
-              return [
-                autoprefixer({
-                  browsers: [
-                    '>1%',
-                    'last 4 versions',
-                    'Firefox ESR',
-                    'not ie < 9', // Vue doesn't support IE8 anyway
-                  ]
-                })
-              ]
-            }
-          }
-        }]
+        use: ['style-loader', 'css-loader', 'stylus-loader', 'postcss-loader']
       },
     ])
   },

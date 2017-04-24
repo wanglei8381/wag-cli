@@ -10,3 +10,11 @@
 .svg {
   background: url("./lei.svg");
 }
+
+body {
+  box-sizing: border-box;
+}
+
+.app {
+  transition: all .2s;
+}
