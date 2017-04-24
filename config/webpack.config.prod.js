@@ -3,6 +3,7 @@ let webpack = require("webpack");
 var autoprefixer = require('autoprefixer');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 // let ManifestPlugin = require("webpack-manifest-plugin");
+var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let webpackConfig = require("./webpack.config.base").webpackConfig;
 let devModuleRules = require("./webpack.config.dev").module.rules;
@@ -113,7 +114,13 @@ if (userConfig && userConfig.vendor && userConfig.vendor.length) {
 if (userConfig.extractCSS) {
   config.plugins.push(
     //提取css,生成对应对文件
-    new ExtractTextPlugin(userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css')
+    new ExtractTextPlugin(userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css'),
+    //提取的css可能存在重复的样式，去掉重复的
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    })
   )
 }
 
