@@ -52,7 +52,12 @@ function createApp (root, appName) {
     },
     devDependencies: {
       "wag-cli": version
-    }
+    },
+    browserslist: [
+      "> 1%",
+      "last 2 versions",
+      "not ie <= 8"
+    ]
   }
 
   //创建目录
