@@ -3,7 +3,6 @@
   ],
   "completelyIgnore": [
     ".idea",
-    "test/**",
     ".gitignore",
     ".babelrc",
     ".eslintrc.json",

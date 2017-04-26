@@ -1,13 +1,25 @@
+var webpackConfig = require('./webpack.config.test')
+
 module.exports = function (config) {
   config.set({
-    browsers: ['Chrome'],
-    frameworks: ['mocha', 'chai'],
-    files: ['./src/index.js', './test/index.js'],
-    singleRun: false,
-    plugins: [
-      'karma-mocha',
-      'karma-chai',
-      'karma-chrome-launcher'
-    ]
+    basePath: webpackConfig.context,
+    browsers: ['PhantomJS'],
+    frameworks: ['mocha', 'chai', 'phantomjs-shim'],
+    reporters: ['spec', 'coverage'],
+    files: ['./test/unit/index.js'],
+    preprocessors: {
+      './test/unit/index.js': ['webpack', 'sourcemap']
+    },
+    webpack: webpackConfig,
+    webpackMiddleware: {
+      noInfo: true
+    },
+    coverageReporter: {
+      dir: './test/unit/coverage',
+      reporters: [
+        {type: 'lcov', subdir: '.'},
+        {type: 'text-summary'}
+      ]
+    }
   })
 }
