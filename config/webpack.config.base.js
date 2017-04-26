@@ -6,7 +6,12 @@ const chalk = require('chalk');
 
 const dirname = process.cwd();
 // 用户自定义的文件入口
-let userConfig = require(path.resolve(dirname, 'webpack.config'));
+let userConfig
+if (util.isFile(path.resolve(dirname, 'wag.config.js'))) {
+  userConfig = require(path.resolve(dirname, 'wag.config'));
+} else {
+  userConfig = require(path.resolve(dirname, 'webpack.config'));
+}
 const context = userConfig.context || dirname;
 let commonsChunkPath;
 

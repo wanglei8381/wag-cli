@@ -1,1 +1,0 @@
-webpackJsonp([1],[,function(e,n,s){"use strict";e.exports={name:"b"}}]);

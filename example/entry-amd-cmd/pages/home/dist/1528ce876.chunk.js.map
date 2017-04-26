@@ -1,1 +1,0 @@
-{"version":3,"file":"pages/home/dist/1528ce876.chunk.js","sources":["webpack:///pages/home/src/b.js"],"sourcesContent":["console.log('======= [b] chunk =======')\nmodule.exports = {\n  name: 'b'\n}\n\n\n\n// WEBPACK FOOTER //\n// pages/home/src/b.js"],"mappings":";;;;;;;;;;AAAA;AACA;AACA;AADA;;;A","sourceRoot":""}
