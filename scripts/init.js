@@ -68,6 +68,12 @@ function createApp (root, appName) {
     JSON.stringify(packageJson, null, 2)
   );
 
+  //不知道为什么在npm发布项目时，会把.gitignore文件名改成.npmignore
+  //手动改过来
+  if (fs.existsSync($path.join(root, '.npmignore'))) {
+    fs.renameSync($path.join(root, '.npmignore'), $path.join(root, '.gitignore'))
+  }
+
   console.log();
   console.log('Success! Created ' + appName + ' at ' + root);
   console.log();
