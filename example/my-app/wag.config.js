@@ -20,8 +20,6 @@ module.exports = {
   /**  开发配置  **/
   // 入口文件
   "index": "pages/home/index.html",
-  // 静态资源目录,默认index的上级目录
-  "staticPath": "pages/home",
   // 端口默认8080
   "port": 8080,
   // 自动打开浏览器

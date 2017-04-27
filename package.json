@@ -1,6 +1,6 @@
 {
   "name": "wag-cli",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "bin": {
     "wag": "bin/wag.js"
   },

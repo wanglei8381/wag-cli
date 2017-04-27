@@ -30,7 +30,7 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({ action: 'reload' })
+    hotMiddleware.publish({action: 'reload'})
     cb()
   })
 })
@@ -50,12 +50,17 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // 静态资源
+app.use('/static', express.static('static'))
+// 用户自定义的资源路径
 let staticPath = serverConfig.staticPath
 if (!staticPath) {
-  staticPath = $path.dirname(serverConfig.index)
+  staticPath = $path.join($path.dirname(serverConfig.index), 'assets')
+  app.use('/assets', express.static(staticPath))
+} else {
+  app.use(express.static(staticPath))
 }
-console.log('[wag][start]staticPath:', staticPath)
-app.use(express.static(staticPath))
+
+console.log('[wag][start]staticPath:', 'static', staticPath)
 
 app.listen(serverConfig.port, function (err) {
   if (err) {

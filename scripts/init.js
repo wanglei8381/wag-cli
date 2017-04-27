@@ -44,7 +44,7 @@ function createApp (root, appName) {
     scripts: {
       dev: 'wag dev',
       start: 'wag start',
-      build: 'wag build',
+      build: 'wag build --remove',
       test: 'wag test'
     },
     dependencies: {
