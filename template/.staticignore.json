@@ -9,6 +9,7 @@
     ".eslintrc.json",
     "package.json",
     "README.md",
+    "wag.config.js",
     "webpack.config.js"
   ]
 }
