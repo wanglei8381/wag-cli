@@ -40,7 +40,7 @@ let webpackConfig = {
   resolve: {
 
     //文件扩展
-    extensions: ['.js', '.json', '.vue'],
+    extensions: ['.js', '.json', '.vue', '.jsx'],
 
     alias: {
       //vue默认是 runtime-only, 改成 standalone

@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const util = require('../util/util');
 const version = require('../package.json').version;
 const vueVersion = require('../package.json').devDependencies.vue;
+const reactVersion = require('../package.json').devDependencies.react;
 
 let projectName;
 //定义参数,以及参数内容的描述
@@ -14,6 +15,7 @@ program
   .action(function (name) {
     projectName = name;
   })
+  .option('--react', '生成react项目')
   .parse(process.argv);
 
 if (typeof projectName === 'undefined') {
@@ -32,9 +34,9 @@ if (util.exists(root) && !program.cover) {
   process.exit(1);
 }
 
-createApp(root, projectName)
+createApp(root, projectName, program.react)
 
-function createApp (root, appName) {
+function createApp (root, appName, isReact) {
 
   const packageJson = {
     name: appName,
@@ -47,9 +49,6 @@ function createApp (root, appName) {
       build: 'wag build --remove',
       test: 'wag test'
     },
-    dependencies: {
-      vue: vueVersion
-    },
     devDependencies: {
       "wag-cli": version
     }
@@ -60,7 +59,21 @@ function createApp (root, appName) {
     fs.mkdirSync(root);
   }
 
-  fs.copySync($path.resolve(__dirname, '../template'), root);
+  let templatePath = '../template/'
+  if (isReact) {
+    packageJson.dependencies = {
+      react: reactVersion,
+      'react-dom': reactVersion
+    }
+    templatePath += 'react'
+  } else {
+    packageJson.dependencies = {
+      vue: vueVersion
+    }
+    templatePath += 'vue'
+  }
+
+  fs.copySync($path.resolve(__dirname, templatePath), root);
 
   //创建package
   fs.writeFileSync(

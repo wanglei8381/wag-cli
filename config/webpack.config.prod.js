@@ -59,7 +59,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: ['css-loader', 'stylus-loader', 'postcss-loader']
+          use: ['css-loader', 'postcss-loader', 'stylus-loader']
         })
       }
     ]) : devModuleRules

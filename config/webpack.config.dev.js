@@ -29,8 +29,8 @@ module.exports = Object.assign({}, webpackConfig, {
       //stylus
       {
         test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader', 'postcss-loader']
-      },
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader']
+      }
     ])
   },
   plugins: [

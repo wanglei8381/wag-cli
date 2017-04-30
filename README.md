@@ -1,14 +1,16 @@
 # wag-cli
-多页面的打包工具，主要针对vue,react项目，支持css和stylus，暂时不支持less和sass/scss
+基于webpack多页面打包工具，主要针对vue,react项目，支持css和stylus，暂时不支持less和sass/scss
+
 ## Install
+
 npm install -g wag-cli
 
 ## Usage
 wag [options] [value ...]
 
 ```
-wag init projectName [--cover]
-初始化一个项目，如果项目已经存在，可以添加--cover参数将其覆盖
+wag init projectName [--cover] [--react]
+初始化一个项目，如果项目已经存在，可以添加--cover参数将其覆盖, 默认生成vue项目，使用--react参数生成react项目
 
 项目目录
 |-components 通用组件
