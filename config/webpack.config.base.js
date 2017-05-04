@@ -43,8 +43,6 @@ let webpackConfig = {
     extensions: ['.js', '.json', '.vue', '.jsx'],
 
     alias: {
-      //vue默认是 runtime-only, 改成 standalone
-      'vue$': 'vue/dist/vue.common.js',
       'components': path.join(context, 'components'),
       'pages': path.join(context, 'pages'),
       '@': path.resolve(context)
@@ -91,7 +89,7 @@ if (!commonsChunkPath) {
 }
 
 // webpackConfig.output.path = path.resolve(context, commonsChunkPath)
-
+// 改变块输出目录
 webpackConfig.output.chunkFilename = commonsChunkPath + '/' + webpackConfig.output.chunkFilename
 
 webpackConfig.module = {
@@ -152,6 +150,10 @@ webpackConfig.module = {
       }
     }
   ]
+}
+
+if (userConfig.runtimeOnly === false) {
+  webpackConfig.resolve.alias.vue$ = 'vue/dist/vue.common.js'
 }
 
 module.exports = {

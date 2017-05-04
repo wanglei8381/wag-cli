@@ -11,6 +11,8 @@ module.exports = {
     "vue",
     "axios"
   ],
+  // vue 运行时环境，默认true
+  "runtimeOnly": true,
   // 生成文件的hash值,默认不生成
   "chunkhash": 8,
   // 是否提取css,默认不提取
