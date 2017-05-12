@@ -3,9 +3,13 @@
   ],
   "completelyIgnore": [
     ".idea",
+    "test/**",
     ".gitignore",
+    ".babelrc",
+    ".eslintrc.json",
     "package.json",
     "README.md",
-    "build/**"
+    "wag.config.js",
+    "webpack.config.js"
   ]
 }

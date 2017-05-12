@@ -8,5 +8,6 @@
   },
   "plugins": [
     "html"
-  ]
+  ],
+  "parser": "babel-eslint"
 }

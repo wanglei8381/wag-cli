@@ -34,7 +34,7 @@ let webpackConfig = {
     // 输出的文件名 hash统一生成,chunkhash变化生成
     filename: "[name].js",
 
-    chunkFilename: "[id][chunkhash:8].chunk.js"
+    chunkFilename: "[name].[chunkhash:8].js"
   },
 
   resolve: {

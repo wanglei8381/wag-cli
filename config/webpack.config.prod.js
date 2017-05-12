@@ -98,15 +98,32 @@ let config = module.exports = Object.assign({}, webpackConfig, {
   bail: true
 })
 
-if (userConfig && userConfig.vendor && userConfig.vendor.length) {
-  //提取文件的公共部分
+// 提取文件的公共部分
+if (userConfig && userConfig.vendor) {
   // commonsChunkPath = path.resolve(dirname, commonsChunkPath);
-  let filename = userConfig.chunkhash ? 'common.[chunkhash:' + userConfig.chunkhash + '].js' : 'common.js'
-  config.entry['vendor'] = userConfig.vendor;
+  var filename = userConfig.chunkhash ? 'common.[chunkhash:' + userConfig.chunkhash + '].js' : 'common.js'
+  // config.entry['vendor'] = userConfig.vendor;
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: 'common',
       filename: commonsChunkPath + '/' + filename,
+      minChunks: ({ resource }) => (
+        resource &&
+        ~resource.indexOf('node_modules') &&
+        resource.match(/\.(jsx?|vue)$/)
+      )
+    })
+  );
+
+  // 提取异步共享的模块
+  config.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin({
+      async: 'async',
+      minChunks: ({ resource }, count) => (
+        resource &&
+        ~resource.indexOf('node_modules') &&
+        resource.match(/\.(jsx?|vue)$/)
+      ) || (count > 1)
     })
   );
 }
@@ -144,4 +161,9 @@ if (userConfig.index) {
       }
     })
   )
+}
+
+if (userConfig.bundleAnalyzerReport) {
+  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  config.plugins.push(new BundleAnalyzerPlugin())
 }

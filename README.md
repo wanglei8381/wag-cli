@@ -42,10 +42,7 @@ module.exports = {
 
  /**  生产配置  **/
  // 提取js模块
- "vendor": [
-   "vue",
-   "axios"
- ],
+ "vendor": true,
  // 生成文件的hash值,默认不生成
  "chunkhash": 8,
  // 是否提取css,默认不提取
@@ -54,6 +51,8 @@ module.exports = {
  "devtool": "#source-map",
  // 线上访问地址，默认//static.wuage.com/项目目录
  "publicPath": "/",
+ // 分析块之间的依赖
+ "bundleAnalyzerReport": true,
 
  /**  开发配置  **/
  // 上下文,默认当前目录
