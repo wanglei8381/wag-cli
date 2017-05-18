@@ -12,5 +12,16 @@
     "transform-runtime",
     "transform-vue-jsx",
     "syntax-dynamic-import"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "env",
+        "stage-0"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
 }
