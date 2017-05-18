@@ -15,10 +15,6 @@
   ],
   "env": {
     "test": {
-      "presets": [
-        "env",
-        "stage-0"
-      ],
       "plugins": [
         "istanbul"
       ]

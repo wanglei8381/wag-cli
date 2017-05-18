@@ -11,7 +11,6 @@ crossEnv([
   'BABEL_ENV=test',
   'karma',
   'start',
-  // 'test/unit/karma.conf.js'
   path.resolve(__dirname, '../config/karma.conf.js')
 ].concat(args))
 

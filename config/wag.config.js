@@ -7,10 +7,7 @@ module.exports = {
 
   /**  生产配置  **/
   // 提取js模块
-  "vendor": [
-    "vue",
-    "axios"
-  ],
+  "vendor": true,
   // vue 运行时环境，默认true
   "runtimeOnly": true,
   // 生成文件的hash值,默认不生成
@@ -41,5 +38,9 @@ module.exports = {
       target: 'http://127.0.0.1:3000',
       changeOrigin: true
     }
-  }
+  },
+
+  /* 测试配置 */
+  // 是否展示测试覆盖率，默认false
+  coverage: true
 }
