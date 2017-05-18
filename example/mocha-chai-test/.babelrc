@@ -11,5 +11,16 @@
   "plugins": [
     "transform-runtime",
     "transform-vue-jsx"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        "env",
+        "stage-0"
+      ],
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
 }

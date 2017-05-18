@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import Hello from 'pages/home/src/App.vue'
+import Hello from 'components/Hello.vue'
 
 describe('Hello.vue', () => {
   it('should render correct contents', () => {
     const Constructor = Vue.extend(Hello)
     const vm = new Constructor().$mount()
     expect(vm.$el.textContent)
-      .to.equal('this is template body')
+      .to.equal('Welcome to Your Vue.js App')
   })
 })

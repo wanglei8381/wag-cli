@@ -1,16 +1,25 @@
 <template>
-  <div>this is template body</div>
+  <div>
+    <input v-model="msg"/>
+    <Hello></Hello>
+    <p>{{ msg }}</p>
+  </div>
 </template>
 <script type="text/babel">
-  import _ from 'lodash'
+  import Hello from 'components/Hello.vue'
   export default{
     data () {
       return {
         msg: 'hello vue'
       }
     },
-    methods: {
-      onInput: _.debounce((e) => e.target.value, 200)
+
+    updated () {
+      console.log('----->APP')
+    },
+
+    components: {
+      Hello
     }
   }
 </script>
