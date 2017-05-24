@@ -107,7 +107,7 @@ webpackConfig.module = {
     {
       test: /\.jsx?$/,
       loader: 'babel-loader',
-      include: context,
+      exclude: _.isObject(userConfig.exclude) ? userConfig.exclude : userConfig.exclude ? /node_modules/ : undefined,
       options: {
         cacheDirectory: true
       }

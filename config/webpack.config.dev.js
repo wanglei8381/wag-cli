@@ -2,7 +2,6 @@ var path = require("path");
 var webpack = require("webpack");
 var autoprefixer = require('autoprefixer');
 var webpackConfig = require("./webpack.config.base").webpackConfig;
-let context = webpackConfig.context
 
 module.exports = Object.assign({}, webpackConfig, {
   output: Object.assign({}, webpackConfig.output, {
@@ -16,8 +15,7 @@ module.exports = Object.assign({}, webpackConfig, {
       //vue
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        include: context
+        loader: 'vue-loader'
       },
 
       //css

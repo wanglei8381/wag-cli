@@ -1,0 +1,10 @@
+{
+  "app.js": "pages/home/dist/app.e3c8292d.js",
+  "app.js.map": "pages/home/dist/app.e3c8292d.js.map",
+  "async.js": "pages/home/dist/async.e05ec218.js",
+  "async.js.map": "pages/home/dist/async.e05ec218.js.map",
+  "common.js": "pages/home/dist/common.js",
+  "common.js.map": "pages/home/dist/common.js.map",
+  "pages/home/dist/main.js": "pages/home/dist/main.js",
+  "pages/home/dist/main.js.map": "pages/home/dist/main.js.map"
+}

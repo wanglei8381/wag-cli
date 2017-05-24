@@ -5,6 +5,9 @@ module.exports = {
     "pages/home/src/index.js": 1
   },
 
+  // 对于node_modules下的js是否排除
+  "exclude": true,
+
   /**  生产配置  **/
   // 提取js模块
   "vendor": true,
