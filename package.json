@@ -1,13 +1,22 @@
 {
   "name": "wag-cli",
-  "version": "3.1.7",
+  "version": "3.1.8",
+  "description": "基于webpack多页面打包工具",
   "bin": {
     "wag": "bin/wag.js"
   },
+  "keywords": [
+    "wag-cli",
+    "webpack",
+    "vue"
+  ],
   "author": "lei.wang@wuage.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/wanglei8381/wag-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wanglei8381/wag-cli/issues"
   },
   "license": "MIT",
   "dependencies": {
