@@ -7,6 +7,7 @@
 </template>
 <script type="text/babel">
   import Hello from 'components/Hello.vue'
+  import axios from 'axios'
   export default{
     data () {
       return {
@@ -16,6 +17,12 @@
 
     updated () {
       console.log('----->APP')
+    },
+
+    created () {
+      axios.get('/api').then((res) => {
+        console.log(res)
+      })
     },
 
     components: {

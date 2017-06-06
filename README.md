@@ -39,6 +39,8 @@ module.exports = {
  "files": {
    "pages/home/src/index.js": 1
  },
+ // 对于node_modules下的js是否排除
+ "exclude": true,
 
  /**  生产配置  **/
  // 提取js模块
@@ -71,7 +73,15 @@ module.exports = {
      target: 'http://127.0.0.1:3000',
      changeOrigin: true
    }
- }
+ },
+ // 添加mock，key：请求路径，value:文件地址
+ "mockTable": {
+    '/api': 'mocks/home.js'
+ },
+ 
+ /** 测试配置 */
+ // 是否展示测试覆盖率，默认false
+ coverage: true
 } 
 ```
 

@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'development';
 const $path = require('path');
 const express = require('express')
+const util = require('../util/util');
 const proxyMiddleware = require('http-proxy-middleware')
 let userConfig = require('../config/webpack.config.base').userConfig;
 let serverConfig = require('../config/server.config');
@@ -30,7 +31,7 @@ var hotMiddleware = require('webpack-hot-middleware')(compiler, {
 // force page reload when html-webpack-plugin template changes
 compiler.plugin('compilation', function (compilation) {
   compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
-    hotMiddleware.publish({action: 'reload'})
+    hotMiddleware.publish({ action: 'reload' })
     cb()
   })
 })
@@ -40,9 +41,22 @@ if (serverConfig.proxyTable) {
   Object.keys(serverConfig.proxyTable).forEach(function (context) {
     var options = serverConfig.proxyTable[context]
     if (typeof options === 'string') {
-      options = {target: options}
+      options = { target: options }
     }
     app.use(proxyMiddleware(options.filter || context, options))
+  })
+}
+
+// mock api requests
+if (serverConfig.mockTable) {
+  Object.keys(serverConfig.mockTable).forEach(function (context) {
+    var options = serverConfig.mockTable[context]
+    var mockFile = $path.resolve(webpackConfig.context, options)
+    if (util.isFile(mockFile)) {
+      app.use(context, require(mockFile))
+    } else {
+      console.log('[wag][start]mockTable:', context, options, '文件不存在')
+    }
   })
 }
 

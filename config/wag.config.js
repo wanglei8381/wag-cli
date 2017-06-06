@@ -42,6 +42,10 @@ module.exports = {
       changeOrigin: true
     }
   },
+  // mock，如果proxyTable存在，mockTable失效
+  "mockTable": {
+    '/api': 'mocks/home.js'
+  },
 
   /* 测试配置 */
   // 是否展示测试覆盖率，默认false
