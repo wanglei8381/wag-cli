@@ -1,5 +1,5 @@
 # wag-cli
-基于webpack多页面打包工具，主要针对vue,react项目，支持css和stylus，暂时不支持less和sass/scss
+基于webpack多页面打包工具，主要针对vue,react项目，支持css，stylus，less和sass/scss
 
 ## Install
 

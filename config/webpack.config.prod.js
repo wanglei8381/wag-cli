@@ -40,6 +40,18 @@ let config = module.exports = Object.assign({}, webpackConfig, {
             stylus: ExtractTextPlugin.extract({
               fallback: "style-loader",
               use: ['css-loader', 'stylus-loader']
+            }),
+            less: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: ['css-loader', 'less-loader']
+            }),
+            sass: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: ['css-loader', 'sass-loader']
+            }),
+            scss: ExtractTextPlugin.extract({
+              fallback: "style-loader",
+              use: ['css-loader', 'sass-loader']
             })
           }
         }
@@ -60,6 +72,24 @@ let config = module.exports = Object.assign({}, webpackConfig, {
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ['css-loader', 'postcss-loader', 'stylus-loader']
+        })
+      },
+
+      //less
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader', 'postcss-loader', 'less-loader']
+        })
+      },
+
+      //sass
+      {
+        test: /\.s[ac]ss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ['css-loader', 'postcss-loader', 'sass-loader']
         })
       }
     ]) : devModuleRules

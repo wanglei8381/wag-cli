@@ -1,6 +1,6 @@
 {
   "name": "wag-cli",
-  "version": "3.2.3",
+  "version": "3.2.6",
   "description": "基于webpack多页面打包工具",
   "bin": {
     "wag": "bin/wag.js"
@@ -45,6 +45,10 @@
     "style-loader": "^0.16.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
     "url-loader": "^0.5.8",
     "vue-loader": "^12.0.3",
     "vue-style-loader": "^3.0.1",

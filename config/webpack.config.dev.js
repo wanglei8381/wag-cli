@@ -28,6 +28,18 @@ module.exports = Object.assign({}, webpackConfig, {
       {
         test: /\.styl$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader']
+      },
+
+      //less
+      {
+        test: /\.less&/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+      },
+
+      //sass
+      {
+        test: /\.s[ac]ss&/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       }
     ])
   },
