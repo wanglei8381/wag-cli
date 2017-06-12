@@ -1,7 +1,10 @@
 import Vue from 'vue'
-import _ from 'lodash'
+import './style.css'
+import './style.styl'
+import './style.less'
+import './style.sass'
+import './style.scss'
 
-Vue._ = _
 Vue.config.productionTip = false
 
 import(/* webpackChunkName: "app" */'./App').then((App) => {
