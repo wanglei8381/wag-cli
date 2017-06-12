@@ -102,3 +102,6 @@ module.exports = {
     -c, --cover    如果工程名存在,就覆盖掉
     -r, --remove   build之前将dist目录删掉
 
+## 其他
+在测试时使用PhantomJS，但安装经常失败，在package.json依赖中去掉了，
+需要手动安装karma-phantomjs-launcher和karma-phantomjs-shim
