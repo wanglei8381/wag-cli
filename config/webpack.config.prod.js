@@ -9,6 +9,7 @@ let webpackConfig = require("./webpack.config.base").webpackConfig;
 let devModuleRules = require("./webpack.config.dev").module.rules;
 let commonsChunkPath = require("./webpack.config.base").commonsChunkPath;
 let userConfig = require("./webpack.config.base").userConfig;
+let exclude = require("./webpack.config.base").exclude;
 let context = webpackConfig.context
 let publicPath = userConfig.publicPath
 // 默认自己公司的配置
@@ -30,7 +31,7 @@ let config = module.exports = Object.assign({}, webpackConfig, {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: context,
+        exclude: exclude,
         options: {
           loaders: {
             css: ExtractTextPlugin.extract({
@@ -38,19 +39,19 @@ let config = module.exports = Object.assign({}, webpackConfig, {
               fallback: 'vue-style-loader'
             }),
             stylus: ExtractTextPlugin.extract({
-              fallback: "style-loader",
+              fallback: "vue-style-loader",
               use: ['css-loader', 'stylus-loader']
             }),
             less: ExtractTextPlugin.extract({
-              fallback: "style-loader",
+              fallback: "vue-style-loader",
               use: ['css-loader', 'less-loader']
             }),
             sass: ExtractTextPlugin.extract({
-              fallback: "style-loader",
+              fallback: "vue-style-loader",
               use: ['css-loader', 'sass-loader']
             }),
             scss: ExtractTextPlugin.extract({
-              fallback: "style-loader",
+              fallback: "vue-style-loader",
               use: ['css-loader', 'sass-loader']
             })
           }
@@ -135,7 +136,7 @@ if (userConfig && userConfig.vendor) {
   // config.entry['vendor'] = userConfig.vendor;
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
+      name: commonsChunkPath + '/common',
       filename: commonsChunkPath + '/' + filename,
       minChunks: ({ resource }) => (
         resource &&
@@ -148,7 +149,7 @@ if (userConfig && userConfig.vendor) {
   // 提取异步共享的模块
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      async: 'async',
+      async: 'chunks',
       minChunks: ({ resource }, count) => (
         resource &&
         ~resource.indexOf('node_modules') &&
@@ -161,7 +162,10 @@ if (userConfig && userConfig.vendor) {
 if (userConfig.extractCSS) {
   config.plugins.push(
     //提取css,生成对应对文件
-    new ExtractTextPlugin(userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css'),
+    new ExtractTextPlugin({
+      filename: userConfig.chunkhash ? '[name].[chunkhash:' + userConfig.chunkhash + '].css' : '[name].css',
+      allChunks: true
+    }),
     //提取的css可能存在重复的样式，去掉重复的
     new OptimizeCSSPlugin({
       cssProcessorOptions: {

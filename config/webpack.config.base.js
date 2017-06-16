@@ -92,6 +92,8 @@ if (!commonsChunkPath) {
 // 改变块输出目录
 webpackConfig.output.chunkFilename = commonsChunkPath + '/' + webpackConfig.output.chunkFilename
 
+let exclude = _.isObject(userConfig.exclude) ? userConfig.exclude : userConfig.exclude ? /node_modules/ : undefined
+
 webpackConfig.module = {
   rules: [
     //linter:standard
@@ -107,7 +109,7 @@ webpackConfig.module = {
     {
       test: /\.jsx?$/,
       loader: 'babel-loader',
-      exclude: _.isObject(userConfig.exclude) ? userConfig.exclude : userConfig.exclude ? /node_modules/ : undefined,
+      exclude: exclude,
       options: {
         cacheDirectory: true
       }
@@ -159,5 +161,6 @@ if (userConfig.runtimeOnly === false) {
 module.exports = {
   userConfig,
   webpackConfig,
-  commonsChunkPath
+  commonsChunkPath,
+  exclude
 }

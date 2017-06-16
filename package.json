@@ -1,6 +1,6 @@
 {
   "name": "wag-cli",
-  "version": "3.2.6",
+  "version": "3.2.8",
   "description": "基于webpack多页面打包工具",
   "bin": {
     "wag": "bin/wag.js"
