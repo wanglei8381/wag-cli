@@ -105,3 +105,6 @@ module.exports = {
 ## 其他
 在测试时使用PhantomJS，但安装经常失败，在package.json依赖中去掉了，
 需要手动安装karma-phantomjs-launcher和karma-phantomjs-shim
+经常失败的包，手动安装
+sass-loader
+node-sass
