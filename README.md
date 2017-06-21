@@ -108,3 +108,5 @@ module.exports = {
 经常失败的包，手动安装
 sass-loader
 node-sass
+less
+less-loader

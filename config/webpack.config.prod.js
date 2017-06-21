@@ -1,4 +1,5 @@
 let path = require("path");
+let util = require("../util/util");
 let webpack = require("webpack");
 var autoprefixer = require('autoprefixer');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -26,74 +27,18 @@ let config = module.exports = Object.assign({}, webpackConfig, {
 
   }),
   module: {
-    rules: userConfig.extractCSS ? webpackConfig.module.rules.concat([
+    rules: userConfig.extractCSS ? webpackConfig.module.rules.concat(
       //vue
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         exclude: exclude,
         options: {
-          loaders: {
-            css: ExtractTextPlugin.extract({
-              use: 'css-loader',
-              fallback: 'vue-style-loader'
-            }),
-            stylus: ExtractTextPlugin.extract({
-              fallback: "vue-style-loader",
-              use: ['css-loader', 'stylus-loader']
-            }),
-            less: ExtractTextPlugin.extract({
-              fallback: "vue-style-loader",
-              use: ['css-loader', 'less-loader']
-            }),
-            sass: ExtractTextPlugin.extract({
-              fallback: "vue-style-loader",
-              use: ['css-loader', 'sass-loader']
-            }),
-            scss: ExtractTextPlugin.extract({
-              fallback: "vue-style-loader",
-              use: ['css-loader', 'sass-loader']
-            })
-          }
+          loaders: util.extractVueStlye()
         }
       },
-
-      //css
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", 'postcss-loader']
-        })
-      },
-
-      //stylus
-      {
-        test: /\.styl$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'postcss-loader', 'stylus-loader']
-        })
-      },
-
-      //less
-      {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'postcss-loader', 'less-loader']
-        })
-      },
-
-      //sass
-      {
-        test: /\.s[ac]ss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ['css-loader', 'postcss-loader', 'sass-loader']
-        })
-      }
-    ]) : devModuleRules
+      util.stlyeRules(userConfig["devtool"], true)
+    ) : devModuleRules
   },
   plugins: [
     //配置环境
@@ -128,6 +73,11 @@ let config = module.exports = Object.assign({}, webpackConfig, {
   //编译期间一旦出错就停止编译
   bail: true
 })
+
+// webpack3.0  模块作用域提升
+if (webpack.optimize.ModuleConcatenationPlugin) {
+  config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
+}
 
 // 提取文件的公共部分
 if (userConfig && userConfig.vendor) {
@@ -181,18 +131,7 @@ if (userConfig.index) {
     //引入模版文件
     new HtmlWebpackPlugin({
       filename: filename,
-      template: './' + userConfig.index,
-      minify: {
-        quoteCharacter: '"',
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
+      template: userConfig.index
     })
   )
 }

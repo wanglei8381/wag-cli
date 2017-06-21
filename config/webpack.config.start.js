@@ -32,18 +32,7 @@ module.exports = Object.assign({}, webpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     //引入模版文件
     new HtmlWebpackPlugin({
-      template: './' + userConfig.index,
-      minify: {
-        quoteCharacter: '"',
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
+      template: userConfig.index
     }),
     new FriendlyErrorsPlugin()
   ]

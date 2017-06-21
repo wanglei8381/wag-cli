@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false
+      }
+    ],
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-vue-jsx",
+    "syntax-dynamic-import"
+  ]
+}
