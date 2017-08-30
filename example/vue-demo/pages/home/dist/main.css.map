@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"pages/home/dist/main.css","sourceRoot":""}
+{"version":3,"sources":["webpack:///./style.css","webpack:///./pages/home/src/style.styl"],"names":[],"mappings":"AAAA,KACE,cAAgB,CCDlB,KACE,e","file":"pages/home/dist/main.css","sourcesContent":["#app {\n  font-size: 12px;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./style.css","#app {\n  font-size 13px\n}\n\n\n\n// WEBPACK FOOTER //\n// ./pages/home/src/style.styl"],"sourceRoot":""}

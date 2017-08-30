@@ -94,19 +94,19 @@ if (userConfig && userConfig.vendor) {
         resource.match(/\.(jsx?|vue)$/)
       )
     })
-  );
+  )
 
   // 提取异步共享的模块
   config.plugins.push(
     new webpack.optimize.CommonsChunkPlugin({
-      async: 'chunks',
+      async: true,
       minChunks: ({ resource }, count) => (
         resource &&
         ~resource.indexOf('node_modules') &&
         resource.match(/\.(jsx?|vue)$/)
       ) || (count > 1)
     })
-  );
+  )
 }
 
 if (userConfig.extractCSS) {
