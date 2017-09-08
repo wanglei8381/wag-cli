@@ -2,7 +2,8 @@
   <div>
     <input v-model="msg"/>
     <Hello></Hello>
-    <p>{{ msg }}</p>
+    <p v-for="item in 10"
+       v-if="item > 1">{{ msg }}</p>
   </div>
 </template>
 <script type="text/babel">

@@ -1,14 +1,17 @@
 <template>
-  <div>this is template body</div>
+  <Hello></Hello>
 </template>
 <script type="text/babel">
+  import Hello from 'components/Hello.vue'
   export default{
     data () {
       return {
         msg: 'hello vue'
       }
     },
-    components: {}
+    components: {
+      Hello
+    }
   }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">

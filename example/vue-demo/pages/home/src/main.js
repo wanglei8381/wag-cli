@@ -7,12 +7,23 @@ import './style.styl'
 
 Vue.config.productionTip = false
 
+const Toast = {
+  render (h) {
+    return <h1>OK</h1>
+  }
+}
+
 import(/* webpackChunkName: "app" */'./App').then((App) => {
   /* eslint-disable no-new */
   new Vue({
     el: '#app',
     render (h) {
-      return <App></App>
+      return (
+        <div>
+          <Toast/>
+          <App></App>
+        </div>
+      )
     }
   })
 })

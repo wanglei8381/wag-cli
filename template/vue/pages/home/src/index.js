@@ -1,13 +1,13 @@
 import Vue from 'vue'
+/* eslint-disable no-unused-vars */
+import App from './App'
 
 Vue.config.productionTip = false
 
-import('./App').then((App) => {
-  /* eslint-disable no-new */
-  new Vue({
-    el: '#app',
-    render (h) {
-      return <App></App>
-    }
-  })
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  render (h) {
+    return <App></App>
+  }
 })

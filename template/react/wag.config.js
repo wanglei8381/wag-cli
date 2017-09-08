@@ -1,7 +1,7 @@
 module.exports = {
   // 编译文件入口
   "files": {
-    "pages/home/src/index.jsx": 1
+    "pages/home/src/index.js": 1
   },
 
   /**  生产配置  **/

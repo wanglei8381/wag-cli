@@ -9,10 +9,11 @@
     "build": "wag build --remove",
     "test": "wag test"
   },
-  "dependencies": {
-    "vue": "^2.2.6"
-  },
   "devDependencies": {
-    "wag-cli": "3.0.5"
+    "wag-cli": "3.3.2"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
