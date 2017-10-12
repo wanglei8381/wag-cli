@@ -155,7 +155,7 @@ webpackConfig.module = {
 }
 
 if (userConfig.runtimeOnly === false) {
-  webpackConfig.resolve.alias.vue$ = 'vue/dist/vue.common.js'
+  webpackConfig.resolve.alias.vue$ = 'vue/dist/vue.esm.js'
 }
 
 module.exports = {
