@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>ja  ja2</h1>
     <input v-model="msg"/>
     <Hello></Hello>
     <p v-for="item in 10"

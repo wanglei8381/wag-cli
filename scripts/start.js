@@ -1,11 +1,11 @@
-process.env.NODE_ENV = 'development';
-const $path = require('path');
+process.env.NODE_ENV = 'development'
+const $path = require('path')
 const express = require('express')
-const util = require('../util/util');
+const util = require('../util')
 const proxyMiddleware = require('http-proxy-middleware')
-let userConfig = require('../config/webpack.config.base').userConfig;
-let serverConfig = require('../config/server.config');
-let webpackConfig = require('../config/webpack.config.start');
+let userConfig = require('../config/webpack.config.base').userConfig
+let serverConfig = require('../config/server.config')
+let webpackConfig = require('../config/webpack.config.start')
 let opn = require('opn')
 let webpack = require('webpack')
 
@@ -25,7 +25,8 @@ devMiddleware.waitUntilValid(function () {
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: () => {}
+  log: false,
+  heartbeat: 2000
 })
 
 // force page reload when html-webpack-plugin template changes
@@ -59,6 +60,9 @@ if (serverConfig.mockTable) {
     }
   })
 }
+
+// handle fallback for HTML5 history API
+app.use(require('connect-history-api-fallback')())
 
 app.use(devMiddleware)
 app.use(hotMiddleware)

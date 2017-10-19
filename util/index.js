@@ -1,5 +1,4 @@
 var fs = require('fs');
-var $path = require('path');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 //文件或目录是否存在

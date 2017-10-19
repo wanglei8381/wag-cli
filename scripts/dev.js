@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'development';
 
-const webpack = require('webpack');
-let webpackConfig = require('../config/webpack.config.dev');
+const webpack = require('webpack')
+const webpackConfig = require('../config/webpack.config.dev')
 
 webpack(webpackConfig, function (err, stats) {
   if (err) {

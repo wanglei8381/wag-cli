@@ -1,21 +1,23 @@
-var webpackConfig = require("./webpack.config.dev");
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-let webpack = require('webpack');
-let util = require('../util/util');
-let $path = require('path');
-let FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const chalk = require('chalk');
-let userConfig = require('../config/webpack.config.base').userConfig;
-let context = require('../config/webpack.config.base').webpackConfig.context;
+const webpackConfig = require("./webpack.config.dev")
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const util = require('../util')
+const $path = require('path')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const chalk = require('chalk')
+const userConfig = require('./webpack.config.base').userConfig
+const context = webpackConfig.context
+const webpackClientPath = $path.join(__dirname, 'webpack.client.js')
 
+// 检查index入口文件是否存在
 if (!userConfig.index || !util.isFile($path.resolve(context, userConfig.index))) {
   console.log(chalk.bold.red('\n[wag][start]webpack.config的index配置不正确\n'));
   process.exit(1)
 }
 
-// add hot-reload related code to entry chunks
+// 对每一个入口文件添加 hot-reload 依赖
 Object.keys(webpackConfig.entry).forEach(function (name) {
-  webpackConfig.entry[name] = [$path.join(__dirname, 'webpack.client.js')].concat(webpackConfig.entry[name])
+  webpackConfig.entry[name] = [webpackClientPath].concat(webpackConfig.entry[name])
 })
 
 module.exports = Object.assign({}, webpackConfig, {
