@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const _ = require('lodash')
 const $path = require('path')
 const fs = require('fs-extra')
-const util = require('../util/util')
+const util = require('../util')
 const packageConfig = require('../package.json')
 
 let projectName
